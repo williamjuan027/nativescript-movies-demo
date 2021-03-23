@@ -1,0 +1,29 @@
+{
+    "categories": [
+        {
+            "displayName": "Action",
+            "categoryKey": "action",
+            "image": "~/assets/images/categories/action.png"
+        },
+        {
+            "displayName": "Adventure",
+            "categoryKey": "adventure",
+            "image": "~/assets/images/categories/adventure.png"
+        },
+        {
+            "displayName": "Drama",
+            "categoryKey": "drama",
+            "image": "~/assets/images/categories/drama.png"
+        },
+        {
+            "displayName": "Family",
+            "categoryKey": "family",
+            "image": "~/assets/images/categories/family.png"
+        },
+        {
+            "displayName": "Romance",
+            "categoryKey": "romance",
+            "image": "~/assets/images/categories/romance.png"
+        }
+    ]
+}

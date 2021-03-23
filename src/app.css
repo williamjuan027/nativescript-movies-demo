@@ -1,0 +1,46 @@
+/* Fonts */
+
+.fa {
+  font-family: FontAwesome, fontawesome-webfont;
+}
+
+.bold {
+  font-family: "Poppins Bold", Poppins-Bold;
+  font-weight: 700;
+}
+
+.medium {
+  font-family: "Poppins Medium", Poppins-Medium;
+  font-weight: 500;
+}
+
+.regular {
+  font-family: "Poppins Regular", Poppins-Regular;
+  font-weight: 400;
+}
+
+.light {
+  font-family: "Poppins Light", Poppins-Light;
+  font-weight: 300;
+}
+
+/* Colors */
+.ns-root {
+  --color-primary: #65adf1;
+  --color-text-default: #393838;
+  --color-bg-default: #e5e5e5;
+}
+
+Label {
+  color: var(--color-text-default);
+  font-family: "Poppins Regular", Poppins-Regular;
+  font-weight: 400;
+}
+
+.text-color-primary {
+  color: var(--color-primary);
+}
+
+.bg-color-primary {
+  background-color: var(--color-primary);
+}

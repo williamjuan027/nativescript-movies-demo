@@ -1,0 +1,46 @@
+import { Component } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Page, EventData, isIOS, GridLayout } from "@nativescript/core";
+import { map, switchMap } from "rxjs/operators";
+import {
+  DataService,
+  Icons,
+  NavigationService,
+  Routes,
+  StylingService,
+} from "@app/core";
+
+@Component({
+  moduleId: module.id,
+  selector: "ns-details",
+  templateUrl: "details.component.html",
+})
+export class DetailsComponent {
+  icons = Icons;
+
+  movieId$ = this.activatedRoute.params.pipe(map((params) => params.id));
+  movieDetails$ = this.movieId$.pipe(
+    switchMap((id) => this.dataService.getMovieById(id))
+  );
+  relatedMovies$ = this.movieId$.pipe(
+    switchMap((id) => this.dataService.getRelatedMoviesById(id))
+  );
+
+  constructor(
+    private page: Page,
+    private activatedRoute: ActivatedRoute,
+    private dataService: DataService,
+    private navigationService: NavigationService,
+    private stylingService: StylingService
+  ) {
+    this.page.actionBarHidden = true;
+  }
+
+  onHeroLoaded(args: EventData): void {
+    this.stylingService.applyShadow(args);
+  }
+
+  navigateToMovieDetails(id: number): void {
+    this.navigationService.navigate(Routes.details, { id: id });
+  }
+}

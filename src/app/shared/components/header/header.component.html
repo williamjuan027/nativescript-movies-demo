@@ -1,0 +1,30 @@
+<GridLayout
+    verticalAlignment="top"
+    height="60"
+    row="0"
+    rows="*"
+    columns="60, *, auto, *, 60">
+    <ng-container *ngIf="hasBackButton">
+        <GridLayout
+            row="0"
+            col="0"
+            padding="10"
+            (tap)="back()">
+            <Label
+                verticalAlignment="center"
+                [text]="icons.back"
+                color="#fff"
+                fontSize="20"
+                class="fa"></Label>
+        </GridLayout>
+    </ng-container>
+
+    <Label
+        row="0"
+        col="2"
+        verticalAlignment="center"
+        horizontalAlignment="center"
+        [text]="headerTitle | uppercase"
+        class="bold text-color-primary"
+        fontSize="20"></Label>
+</GridLayout>
