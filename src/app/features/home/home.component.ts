@@ -1,12 +1,18 @@
 import { Component } from "@angular/core";
 import { map } from "rxjs/operators";
-import { DataService, NavigationService, Routes } from "@app/core";
+import {
+  DataService,
+  NavigationService,
+  Routes,
+  SlideUpFadeStagger,
+} from "@app/core";
 import { EventData, isIOS, GridLayout, Page } from "@nativescript/core";
 
 @Component({
   moduleId: module.id,
   selector: "ns-home",
   templateUrl: "home.component.html",
+  animations: [SlideUpFadeStagger],
 })
 export class HomeComponent {
   categories$ = this.dataService.getCategories();

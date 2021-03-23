@@ -1,12 +1,13 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { Page, EventData, isIOS, GridLayout } from "@nativescript/core";
+import { Page, EventData } from "@nativescript/core";
 import { map, switchMap } from "rxjs/operators";
 import {
   DataService,
   Icons,
   NavigationService,
   Routes,
+  SlideUpFadeStagger,
   StylingService,
 } from "@app/core";
 
@@ -14,6 +15,7 @@ import {
   moduleId: module.id,
   selector: "ns-details",
   templateUrl: "details.component.html",
+  animations: [SlideUpFadeStagger],
 })
 export class DetailsComponent {
   icons = Icons;
