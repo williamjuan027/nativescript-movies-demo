@@ -19,6 +19,21 @@
         </GridLayout>
     </ng-container>
 
+    <ng-container *ngIf="hasMenuButton">
+        <GridLayout
+            row="0"
+            col="0"
+            padding="10"
+            (tap)="openMenu()">
+            <Label
+                verticalAlignment="center"
+                [text]="icons.menu"
+                color="#444"
+                fontSize="20"
+                class="fa"></Label>
+        </GridLayout>
+    </ng-container>
+
     <Label
         row="0"
         col="2"

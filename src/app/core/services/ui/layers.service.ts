@@ -5,6 +5,9 @@ import { BehaviorSubject, Observable } from "rxjs";
 })
 export class LayersService {
   private _layers$ = new BehaviorSubject<Layers>({
+    menu: {
+      isOpen: false,
+    },
     quickviewBottomsheet: {
       isOpen: false,
       movieId: undefined,
@@ -13,6 +16,24 @@ export class LayersService {
 
   getLayers$(): Observable<Layers> {
     return this._layers$.asObservable();
+  }
+
+  openMenu(): void {
+    this._layers$.next({
+      ...this.getLayersCurrentValue(),
+      menu: {
+        isOpen: true,
+      },
+    });
+  }
+
+  closeMenu(): void {
+    this._layers$.next({
+      ...this.getLayersCurrentValue(),
+      menu: {
+        isOpen: false,
+      },
+    });
   }
 
   openQuickviewBottomsheet(movieId: number): void {
@@ -41,6 +62,9 @@ export class LayersService {
 }
 
 export interface Layers {
+  menu: {
+    isOpen: boolean;
+  };
   quickviewBottomsheet: {
     isOpen: boolean;
     movieId: number;

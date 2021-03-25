@@ -1,5 +1,13 @@
-<GridLayout>
-  <page-router-outlet></page-router-outlet>
+<GridLayout columns="*,*">
 
-  <ns-quickview-bottomsheet></ns-quickview-bottomsheet>
+  <StackLayout col="0">
+<Label text="close" (tap)="closeMenu()"></Label>
+  </StackLayout>
+
+  <!-- main content -->
+  <GridLayout col="0" colSpan="2" [@mainContent]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'">
+    <page-router-outlet></page-router-outlet>
+  
+    <ns-quickview-bottomsheet></ns-quickview-bottomsheet>
+  </GridLayout>
 </GridLayout>
