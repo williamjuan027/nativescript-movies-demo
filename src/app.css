@@ -28,7 +28,7 @@
 .ns-root {
   --color-primary: #65adf1;
   --color-text-default: #393838;
-  --color-bg-default: #e5e5e5;
+  --color-bg-default: #fefefe;
 }
 
 Label {
@@ -43,4 +43,8 @@ Label {
 
 .bg-color-primary {
   background-color: var(--color-primary);
+}
+
+.bg-color-default {
+  background-color: var(--color-bg-default);
 }

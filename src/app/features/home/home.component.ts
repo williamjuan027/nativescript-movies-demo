@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { map } from "rxjs/operators";
 import {
   DataService,
+  LayersService,
   NavigationService,
   Routes,
   SlideUpFadeStagger,
@@ -26,7 +27,8 @@ export class HomeComponent {
   constructor(
     private page: Page,
     private dataService: DataService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private layersService: LayersService
   ) {
     this.page.actionBarHidden = true;
   }
@@ -43,6 +45,7 @@ export class HomeComponent {
   }
 
   navigateToMovieDetails(id: number): void {
-    this.navigationService.navigate(Routes.details, { id: id });
+    // this.navigationService.navigate(Routes.details, { id: id });
+    this.layersService.openQuickviewBottomsheet(id);
   }
 }

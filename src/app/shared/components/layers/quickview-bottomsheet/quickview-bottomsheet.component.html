@@ -1,0 +1,24 @@
+<GridLayout
+    *ngIf="isOpen$ | async"
+    @fade
+    rows="*"
+    backgroundColor="rgba(0,0,0,0.5)"
+    (tap)="close()">
+</GridLayout>
+<GridLayout
+    *ngIf="isOpen$ | async"
+    @slideUp
+    verticalAlignment="bottom"
+    padding="20"
+    rows="auto, auto"
+    class="bg-color-default"
+    borderRadius="10 10 0 0">
+
+    <StackLayout>
+        <ng-container *ngIf="movieDetails$ | async as movieDetails">
+            <Label [text]="movieDetails.title"></Label>
+            <Label [text]="movieDetails.description" textWrap="true"></Label>
+        </ng-container>
+    </StackLayout>
+
+</GridLayout>
