@@ -3,11 +3,10 @@ import { map } from "rxjs/operators";
 import {
   DataService,
   LayersService,
-  NavigationService,
-  Routes,
   SlideUpFadeStagger,
+  StylingService,
 } from "@app/core";
-import { EventData, isIOS, GridLayout, Page } from "@nativescript/core";
+import { EventData, Page } from "@nativescript/core";
 
 @Component({
   moduleId: module.id,
@@ -27,25 +26,17 @@ export class HomeComponent {
   constructor(
     private page: Page,
     private dataService: DataService,
-    private navigationService: NavigationService,
+    private stylingService: StylingService,
     private layersService: LayersService
   ) {
     this.page.actionBarHidden = true;
   }
 
   applyShadow(args: EventData): void {
-    if (isIOS) {
-      const iosNativeView = (<GridLayout>args.object).ios;
-      const layer = iosNativeView.layer;
-      layer.shadowColor = UIColor.blackColor.CGColor;
-      layer.shadowOffset = CGSizeMake(1, 1);
-      layer.shadowOpacity = 0.7;
-      layer.shadowRadius = 5;
-    }
+    this.stylingService.applyShadow(args);
   }
 
   navigateToMovieDetails(id: number): void {
-    // this.navigationService.navigate(Routes.details, { id: id });
     this.layersService.openQuickviewBottomsheet(id);
   }
 }
