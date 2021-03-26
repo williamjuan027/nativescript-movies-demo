@@ -1,8 +1,13 @@
 <GridLayout columns="*,*">
 
-  <StackLayout col="0" padding="20">
+  <!-- <StackLayout col="0" padding="20">
     <Label text="close" (tap)="closeMenu()"></Label>
-  </StackLayout>
+
+    <
+  </StackLayout> -->
+  <ContentView col="0">
+    <ns-menu></ns-menu>
+  </ContentView>
 
   <GridLayout col="0" colSpan="2" [@mainContentShade]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'" (loaded)="addShadow($event)">
     <ContentView class="bg-color-primary" borderRadius="15"></ContentView>

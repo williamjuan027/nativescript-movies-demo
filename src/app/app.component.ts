@@ -62,6 +62,7 @@ export class AppComponent {
   menuIsOpen$ = this.layersService
     .getLayers$()
     .pipe(map((state) => state.menu.isOpen));
+
   constructor(
     private layersService: LayersService,
     private stylingService: StylingService

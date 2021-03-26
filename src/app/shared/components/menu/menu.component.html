@@ -1,0 +1,21 @@
+<StackLayout paddingTop="30">
+    <Label
+        [text]="icons.close"
+        color="#444"
+        fontSize="40"
+        (tap)="closeMenu()"
+        padding="20"
+        class="ionicons"></Label>
+
+        <!-- Greeting -->
+        <Label margin="15 20 0 25" text="Hello" fontSize="25" class="bold text-color-gray"></Label>
+        <Label margin="-5 20 20 25" text="Luca" fontSize="40" class="bold text-color-gray"></Label>
+
+        <ng-container *ngFor="let option of menuOptions">
+            <GridLayout columns="40, 10, *" rows="auto" padding="10 15 10 25">
+                <Label col="0" fontSize="25" [text]="option.icon" class="ionicons text-color-gray"></Label>
+                <Label col="2" fontSize="20" [text]="option.displayName" class="text-color-gray"></Label>
+             </GridLayout>
+        </ng-container>
+    
+  </StackLayout>

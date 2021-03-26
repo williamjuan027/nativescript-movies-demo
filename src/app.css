@@ -4,6 +4,10 @@
   font-family: FontAwesome, fontawesome-webfont;
 }
 
+.ionicons {
+  font-family: Ionicons, ionicons;
+}
+
 .bold {
   font-family: "Poppins Bold", Poppins-Bold;
   font-weight: 700;
@@ -24,10 +28,15 @@
   font-weight: 300;
 }
 
+.ion-alert:before {
+  content: "\f101";
+}
+
 /* Colors */
 .ns-root {
   --color-primary: #65adf1;
   --color-text-default: #393838;
+  --color-text-gray: #444;
   --color-bg-default: #fefefe;
 }
 
@@ -39,6 +48,10 @@ Label {
 
 .text-color-primary {
   color: var(--color-primary);
+}
+
+.text-color-gray {
+  color: var(--color-text-gray);
 }
 
 .bg-color-primary {
