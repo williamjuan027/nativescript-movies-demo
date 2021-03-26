@@ -1,13 +1,19 @@
 <GridLayout columns="*,*">
 
-  <StackLayout col="0">
-<Label text="close" (tap)="closeMenu()"></Label>
+  <StackLayout col="0" padding="20">
+    <Label text="close" (tap)="closeMenu()"></Label>
   </StackLayout>
 
+  <GridLayout col="0" colSpan="2" [@mainContentShade]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'" (loaded)="addShadow($event)">
+    <ContentView class="bg-color-primary" borderRadius="15"></ContentView>
+  </GridLayout>
+
   <!-- main content -->
-  <GridLayout col="0" colSpan="2" [@mainContent]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'">
-    <page-router-outlet></page-router-outlet>
-  
-    <ns-quickview-bottomsheet></ns-quickview-bottomsheet>
+  <GridLayout col="0" colSpan="2" [@mainContent]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'" (loaded)="addShadow($event)">
+    <GridLayout borderRadius="15">
+      <page-router-outlet></page-router-outlet>
+    
+      <ns-quickview-bottomsheet></ns-quickview-bottomsheet>
+    </GridLayout>
   </GridLayout>
 </GridLayout>

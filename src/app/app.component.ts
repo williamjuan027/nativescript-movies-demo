@@ -7,7 +7,8 @@ import {
   trigger,
 } from "@angular/animations";
 import { map } from "rxjs/operators";
-import { LayersService } from "./core";
+import { LayersService, StylingService } from "./core";
+import { EventData } from "@nativescript/core";
 
 @Component({
   selector: "ns-app",
@@ -34,15 +35,43 @@ import { LayersService } from "./core";
         )
       ),
     ]),
+    trigger("mainContentShade", [
+      state(
+        "menuIsOpen",
+        style({ transform: "translate(165, 75)scale(0.65,0.65)" })
+      ),
+      state("menuIsClosed", style({ transform: "translate(0, 0)scale(1,1)" })),
+      transition(
+        "menuIsClosed => menuIsOpen",
+        animate(
+          "300ms 100ms ease-in-out",
+          style({ transform: "translate(165, 75)scale(0.65,0.65)" })
+        )
+      ),
+      transition(
+        "menuIsOpen => menuIsClosed",
+        animate(
+          "300ms ease-in-out",
+          style({ transform: "translate(0, 0)scale(1,1)" })
+        )
+      ),
+    ]),
   ],
 })
 export class AppComponent {
   menuIsOpen$ = this.layersService
     .getLayers$()
     .pipe(map((state) => state.menu.isOpen));
-  constructor(private layersService: LayersService) {}
+  constructor(
+    private layersService: LayersService,
+    private stylingService: StylingService
+  ) {}
 
   closeMenu(): void {
     this.layersService.closeMenu();
+  }
+
+  addShadow(args: EventData): void {
+    this.stylingService.applyShadow(args);
   }
 }
