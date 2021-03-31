@@ -2,7 +2,7 @@
     <ng-container *ngIf="movieDetails$ | async as movieDetails">
         <StackLayout>
             <!-- hero -->
-            <GridLayout height="250" (loaded)="onHeroLoaded($event)">
+            <GridLayout height="250" class="glow-shadow">
                 <Image stretch="aspectFill" [src]="movieDetails.image.cover" iosOverflowSafeArea="true"></Image>
                 <ContentView iosOverflowSafeArea="true" background="linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.2))"></ContentView>
 
@@ -51,7 +51,7 @@
                 <!-- related -->
                 <Label *ngIf="true" text="Related" margin="10 20 0 20" class="bold" fontSize="18"></Label>
                 <ng-container *ngIf="relatedMovies$ | async as movies">
-                    <ScrollView orientation="horizontal">
+                    <ScrollView orientation="horizontal" height="168" scrollBarIndicatorVisible="false">
                         <StackLayout orientation="horizontal" padding="10 20">
                             <ng-container *ngFor="let movie of movies">
                                 <ContentView (tap)="navigateToMovieDetails(movie.id)">

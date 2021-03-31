@@ -61,3 +61,7 @@ Label {
 .bg-color-default {
   background-color: var(--color-bg-default);
 }
+
+.glow-shadow {
+  box-shadow: 0 0 5px rgba(0,0,0,.8);
+}
