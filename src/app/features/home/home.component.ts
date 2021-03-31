@@ -4,7 +4,6 @@ import {
   DataService,
   LayersService,
   SlideUpFadeStagger,
-  StylingService,
 } from "@app/core";
 import { EventData, Page } from "@nativescript/core";
 
@@ -26,14 +25,9 @@ export class HomeComponent {
   constructor(
     private page: Page,
     private dataService: DataService,
-    private stylingService: StylingService,
     private layersService: LayersService
   ) {
     this.page.actionBarHidden = true;
-  }
-
-  applyShadow(args: EventData): void {
-    this.stylingService.applyShadow(args);
   }
 
   navigateToMovieDetails(id: number): void {

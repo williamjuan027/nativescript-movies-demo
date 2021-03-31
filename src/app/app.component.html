@@ -1,4 +1,4 @@
-<GridLayout columns="*,*">
+<GridLayout columns="*,*" iosOverflowSafeArea="false">
 
   <!-- <StackLayout col="0" padding="20">
     <Label text="close" (tap)="closeMenu()"></Label>
@@ -9,13 +9,13 @@
     <ns-menu></ns-menu>
   </ContentView>
 
-  <GridLayout col="0" colSpan="2" [@mainContentShade]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'" (loaded)="addShadow($event)">
-    <ContentView class="bg-color-primary" borderRadius="15"></ContentView>
+  <GridLayout col="0" colSpan="2" [@mainContentShade]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'" [class.glow-shadow]="(menuIsOpen$ | async)">
+    <ContentView class="bg-color-primary"></ContentView>
   </GridLayout>
 
   <!-- main content -->
-  <GridLayout col="0" colSpan="2" [@mainContent]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'" (loaded)="addShadow($event)">
-    <GridLayout borderRadius="15">
+  <GridLayout col="0" colSpan="2" [@mainContent]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'" [class.glow-shadow]="(menuIsOpen$ | async)">
+    <GridLayout>
       <page-router-outlet></page-router-outlet>
     
       <ns-quickview-bottomsheet></ns-quickview-bottomsheet>

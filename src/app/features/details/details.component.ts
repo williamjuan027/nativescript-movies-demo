@@ -8,7 +8,6 @@ import {
   NavigationService,
   Routes,
   SlideUpFadeStagger,
-  StylingService,
 } from "@app/core";
 
 @Component({
@@ -33,13 +32,8 @@ export class DetailsComponent {
     private activatedRoute: ActivatedRoute,
     private dataService: DataService,
     private navigationService: NavigationService,
-    private stylingService: StylingService
   ) {
     this.page.actionBarHidden = true;
-  }
-
-  onHeroLoaded(args: EventData): void {
-    this.stylingService.applyShadow(args);
   }
 
   navigateToMovieDetails(id: number): void {

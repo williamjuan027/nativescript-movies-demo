@@ -7,7 +7,7 @@ import {
   trigger,
 } from "@angular/animations";
 import { map } from "rxjs/operators";
-import { LayersService, StylingService } from "./core";
+import { LayersService } from "./core";
 import { EventData } from "@nativescript/core";
 
 @Component({
@@ -64,15 +64,10 @@ export class AppComponent {
     .pipe(map((state) => state.menu.isOpen));
 
   constructor(
-    private layersService: LayersService,
-    private stylingService: StylingService
+    private layersService: LayersService
   ) {}
 
   closeMenu(): void {
     this.layersService.closeMenu();
-  }
-
-  addShadow(args: EventData): void {
-    this.stylingService.applyShadow(args);
   }
 }
