@@ -1,10 +1,8 @@
 # Movies Demo
 
-> 🎬 Demo for Nativescript Angular Speed Code Youtube Series
+> 🎬 Demo for [Nativescript Angular Speed Code Youtube Series](https://www.youtube.com/playlist?list=PL44i_PSsr5XyxSt5hzJazPw8HMaVcesVu)
 
-Checkout the series on [youtube](https://www.youtube.com/playlist?list=PL44i_PSsr5XyxSt5hzJazPw8HMaVcesVu)
-
-![Sample iOS](screenshots/movies-app-preview.gif){:width="400px"}
+<img alt="movies app preview" src="https://github.com/williamjuan027/nativescript-movies-demo/blob/master/screenshots/movies-app-preview.gif" width="300">
 
 ## Development
 
@@ -16,7 +14,13 @@ git clone https://github.com/williamjuan027/nativescript-movies-demo.git
 cd nativescript-movies-demo
 ```
 
-From there you can run the app on iOS and Android using the following commands:
+Install the project's dependencies
+
+```bash
+npm install
+```
+
+You can then run the app on iOS and Android using the following commands:
 
 ```bash
 npm run start.ios
