@@ -3,8 +3,6 @@ import { tap, map, switchMap } from "rxjs/operators";
 import {
   DataService,
   LayersService,
-  Fade,
-  SlideUp,
   Icons,
   NavigationService,
   Routes,
@@ -14,13 +12,11 @@ import {
   moduleId: module.id,
   selector: "ns-quickview-bottomsheet",
   templateUrl: "quickview-bottomsheet.component.html",
-  animations: [Fade, SlideUp],
 })
 export class QuickviewBottomsheetComponent {
   state$ = this.layersService
     .getLayers$()
     .pipe(map((layers) => layers.quickviewBottomsheet));
-  isOpen$ = this.state$.pipe(map((state) => state.isOpen));
   movieDetails$ = this.state$.pipe(
     map((state) => state.movieId),
     tap((movieId) => (this._movieId = movieId)),

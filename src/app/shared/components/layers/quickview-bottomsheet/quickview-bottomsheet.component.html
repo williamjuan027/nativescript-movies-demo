@@ -1,13 +1,4 @@
 <GridLayout
-    *ngIf="isOpen$ | async"
-    @fade
-    rows="*"
-    backgroundColor="rgba(0,0,0,0.5)"
-    (tap)="close()">
-</GridLayout>
-<GridLayout
-    *ngIf="isOpen$ | async"
-    @slideUp
     (tap)="navigateToMovieDetails()"
     verticalAlignment="bottom"
     padding="20"

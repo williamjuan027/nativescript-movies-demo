@@ -1,24 +1,20 @@
-<GridLayout columns="*,*" iosOverflowSafeArea="false">
+<RootLayout>
 
-  <!-- <StackLayout col="0" padding="20">
-    <Label text="close" (tap)="closeMenu()"></Label>
+    <GridLayout columns="*,*" iosOverflowSafeArea="false">
 
-    <
-  </StackLayout> -->
-  <ContentView col="0">
-    <ns-menu></ns-menu>
-  </ContentView>
+        <!-- menu -->
+        <ContentView col="0">
+            <ns-menu></ns-menu>
+        </ContentView>
 
-  <GridLayout col="0" colSpan="2" [@mainContentShade]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'" [class.glow-shadow]="(menuIsOpen$ | async)">
-    <ContentView class="bg-color-primary"></ContentView>
-  </GridLayout>
+        <!-- nice decor -->
+        <GridLayout col="0" colSpan="2" [@mainContentShade]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'" [class.glow-shadow]="(menuIsOpen$ | async)">
+            <ContentView class="bg-color-primary"></ContentView>
+        </GridLayout>
 
-  <!-- main content -->
-  <GridLayout col="0" colSpan="2" [@mainContent]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'" [class.glow-shadow]="(menuIsOpen$ | async)">
-    <GridLayout>
-      <page-router-outlet></page-router-outlet>
-    
-      <ns-quickview-bottomsheet></ns-quickview-bottomsheet>
+        <!-- main content -->
+        <GridLayout col="0" colSpan="2" [@mainContent]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'" [class.glow-shadow]="(menuIsOpen$ | async)">
+                <page-router-outlet></page-router-outlet>
+        </GridLayout>
     </GridLayout>
-  </GridLayout>
-</GridLayout>
+</RootLayout>
