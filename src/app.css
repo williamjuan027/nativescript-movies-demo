@@ -40,7 +40,11 @@
   --color-bg-default: #fefefe;
 }
 
-Label {
+Page {
+  background-color: var(--color-bg-default);
+}
+
+label {
   color: var(--color-text-default);
   font-family: "Poppins Regular", Poppins-Regular;
   font-weight: 400;
@@ -48,6 +52,10 @@ Label {
 
 .text-color-primary {
   color: var(--color-primary);
+}
+
+.text-color-light {
+  color: var(--color-bg-default);
 }
 
 .text-color-gray {
@@ -62,10 +70,20 @@ Label {
   background-color: var(--color-bg-default);
 }
 
+.border-primary {
+  border-color: var(--color-primary);
+  border-width: 1;
+}
+
+.border-light {
+  border-color: var(--color-bg-default);
+  border-width: 1;
+}
+
 .glow-shadow {
-  box-shadow: 0 0 5px rgba(0,0,0,.8);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
 .title {
-  text-shadow: 1px 1px 1px rgba(101, 173, 241, .8);
+  text-shadow: 1px 1px 1px rgba(101, 173, 241, 0.8);
 }

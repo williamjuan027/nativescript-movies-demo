@@ -10,6 +10,10 @@ export class HeaderComponent {
   @Input() headerTitle: string;
   @Input() hasBackButton: boolean;
   @Input() hasMenuButton: boolean;
+  @Input() rightActionButton?: {
+    icon: typeof Icons;
+    onTap: () => void;
+  };
 
   icons = Icons;
 

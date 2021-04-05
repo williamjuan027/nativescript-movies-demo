@@ -34,6 +34,22 @@
         </GridLayout>
     </ng-container>
 
+    <ng-container *ngIf="rightActionButton">
+        <GridLayout
+            row="0"
+            col="4"
+            padding="10"
+            (tap)="rightActionButton.onTap()">
+            <Label
+                verticalAlignment="center"
+                [text]="rightActionButton.icon"
+                textAlignment="right"
+                color="#444"
+                fontSize="25"
+                class="ionicons"></Label>
+        </GridLayout>
+    </ng-container>
+
     <Label
         row="0"
         col="2"

@@ -1,0 +1,24 @@
+<GridLayout rows="*" columns="auto, 10, *" marginRight="10">
+    <Image 
+        row="0"
+        col="0"
+        height="120"
+        width="90"
+        [src]="imageSrc"
+        class="glow-shadow"
+        stretch="aspectFill"></Image>
+
+        <StackLayout row="0" col="2">
+            <Label
+                [text]="title"
+                fontSize="25"
+                textWrap="true"
+                class="bold">
+            </Label>
+            <Label
+                [text]="description.substring(0, 60) + '...'"
+                textWrap="true"
+                fontSize="18">
+            </Label>
+        </StackLayout>
+</GridLayout>

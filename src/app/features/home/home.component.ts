@@ -2,10 +2,11 @@ import { Component } from "@angular/core";
 import { map } from "rxjs/operators";
 import {
   DataService,
+  Icons,
   LayersService,
   SlideUpFadeStagger,
 } from "@app/core";
-import { EventData, Page } from "@nativescript/core";
+import { Page } from "@nativescript/core";
 
 @Component({
   moduleId: module.id,
@@ -21,6 +22,11 @@ export class HomeComponent {
     .pipe(map((movies) => movies[0]));
   favoriteMovies$ = this.dataService.getFavoriteMovies();
   recommendedMovies$ = this.dataService.getRecommendedMovies();
+
+  headerRightActionButton = {
+    icon: Icons.search,
+    onTap: () => this.layersService.openSearchBottomsheet(),
+  };
 
   constructor(
     private page: Page,

@@ -1,0 +1,15 @@
+<GridLayout
+    rows="auto"
+    columns="auto"
+    padding="8 15"
+    borderRadius="20"
+    class="border-primary"
+    [class.bg-color-primary]="selected"
+    [class.bg-color-default]="!selected">
+    <Label
+        [text]="tagText"
+        fontSize="18"
+        class="medium"
+        [class.text-color-light]="selected"
+        [class.text-color-primary]="!selected"></Label>
+</GridLayout>

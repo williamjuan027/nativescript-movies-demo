@@ -1,7 +1,7 @@
 <ScrollView height="100%">
     <StackLayout @slideUpFadeStagger>
         <!-- header -->
-        <ns-header headerTitle="MOVIES" hasMenuButton="true"></ns-header>
+        <ns-header headerTitle="MOVIES" hasMenuButton="true" [rightActionButton]="headerRightActionButton"></ns-header>
 
         <!-- featured -->
         <ng-container *ngIf="featuredMovie$ | async as movie">

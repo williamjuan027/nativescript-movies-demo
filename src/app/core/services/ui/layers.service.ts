@@ -4,17 +4,19 @@ import {
   Injector,
   NgZone,
   ApplicationRef,
-  ComponentRef,
 } from "@angular/core";
 import {
   getRootLayout,
   View,
-  GridLayout,
   CoreTypes,
   ProxyViewContainer,
 } from "@nativescript/core";
 import { BehaviorSubject, Observable } from "rxjs";
-import { QuickviewBottomsheetComponent } from "~/shared";
+import {
+  FilterBottomsheetComponent,
+  QuickviewBottomsheetComponent,
+  SearchBottomsheetComponent,
+} from "~/shared";
 
 export const DEFAULT_ANIMATION_CURVE = CoreTypes.AnimationCurve.cubicBezier(
   0.17,
@@ -39,8 +41,17 @@ export class LayersService {
       isOpen: false,
     },
     quickviewBottomsheet: {
-      isOpen: false,
+      view: null,
+      isAnimating: false,
       movieId: undefined,
+    },
+    searchBottomsheet: {
+      view: null,
+      isAnimating: false,
+    },
+    filterBottomsheet: {
+      view: null,
+      isAnimating: false,
     },
   });
 
@@ -66,19 +77,159 @@ export class LayersService {
     });
   }
 
-  private _quickviewBottomsheet: View;
+  // Quickview Bottomsheet ----------
+
   openQuickviewBottomsheet(movieId: number): void {
-    this._layers$.next({
-      ...this.getLayersCurrentValue(),
-      quickviewBottomsheet: {
-        isOpen: true,
-        movieId: movieId,
-      },
-    });
     this._getView(QuickviewBottomsheetComponent).then(
       (quickviewBottomsheet) => {
-        this._quickviewBottomsheet = quickviewBottomsheet;
-        getRootLayout().open(this._quickviewBottomsheet, {
+        this._layers$.next({
+          ...this.getLayersCurrentValue(),
+          quickviewBottomsheet: {
+            view: quickviewBottomsheet,
+            isAnimating: true,
+            movieId: movieId,
+          },
+        });
+        getRootLayout()
+          .open(quickviewBottomsheet, {
+            shadeCover: {
+              color: "#000",
+              opacity: 0.5,
+              tapToClose: true,
+            },
+            animation: {
+              enterFrom: {
+                translateY: 500,
+                duration: 250,
+                curve: DEFAULT_ANIMATION_CURVE,
+              },
+              exitTo: {
+                translateY: 500,
+                duration: 250,
+                curve: DEFAULT_ANIMATION_CURVE,
+              },
+            },
+          })
+          .then(() => {
+            this._layers$.next({
+              ...this.getLayersCurrentValue(),
+              quickviewBottomsheet: {
+                ...this.getLayersCurrentValue().quickviewBottomsheet,
+                isAnimating: false,
+              },
+            });
+          });
+      }
+    );
+  }
+
+  closeQuickviewBottomsheet(): void {
+    const quickViewBottomsheet = this.getLayersCurrentValue()
+      .quickviewBottomsheet.view;
+    if (quickViewBottomsheet) {
+      this._layers$.next({
+        ...this.getLayersCurrentValue(),
+        quickviewBottomsheet: {
+          ...this.getLayersCurrentValue().quickviewBottomsheet,
+          isAnimating: true,
+        },
+      });
+      getRootLayout()
+        .close(quickViewBottomsheet)
+        .then(() => {
+          this._layers$.next({
+            ...this.getLayersCurrentValue(),
+            quickviewBottomsheet: {
+              view: null,
+              isAnimating: false,
+              movieId: undefined,
+            },
+          });
+        });
+    }
+  }
+
+  // Search Bottomsheet ----------
+
+  openSearchBottomsheet(): void {
+    this._getView(SearchBottomsheetComponent).then((searchBottomsheet) => {
+      this._layers$.next({
+        ...this.getLayersCurrentValue(),
+        searchBottomsheet: {
+          view: searchBottomsheet,
+          isAnimating: true,
+        },
+      });
+      getRootLayout()
+        .open(searchBottomsheet, {
+          shadeCover: {
+            color: "#000",
+            opacity: 0.5,
+            tapToClose: true,
+          },
+          animation: {
+            enterFrom: {
+              translateY: 800,
+              duration: 250,
+              curve: DEFAULT_ANIMATION_CURVE,
+            },
+            exitTo: {
+              translateY: 800,
+              duration: 250,
+              curve: DEFAULT_ANIMATION_CURVE,
+            },
+          },
+        })
+        .then(() => {
+          this._layers$.next({
+            ...this.getLayersCurrentValue(),
+            searchBottomsheet: {
+              ...this.getLayersCurrentValue().searchBottomsheet,
+              isAnimating: false,
+            },
+          });
+        });
+    });
+  }
+
+  closeSearchBottomsheet(): void {
+    const searchBottomsheet = this.getLayersCurrentValue().searchBottomsheet
+      .view;
+    if (searchBottomsheet) {
+      this._layers$.next({
+        ...this.getLayersCurrentValue(),
+        searchBottomsheet: {
+          ...this.getLayersCurrentValue().searchBottomsheet,
+          isAnimating: true,
+        },
+      });
+      getRootLayout()
+        .close(searchBottomsheet)
+        .then(() => {
+          this._layers$.next({
+            ...this.getLayersCurrentValue(),
+            searchBottomsheet: {
+              view: null,
+              isAnimating: false,
+            },
+          });
+        });
+    }
+  }
+
+  // Filter Bottomsheet ----------
+
+  openFilterBottomsheet(): void {
+    this._getView(FilterBottomsheetComponent).then((filterBottomsheet) => {
+      this._layers$.next({
+        ...this.getLayersCurrentValue(),
+        filterBottomsheet: {
+          view: filterBottomsheet,
+          isAnimating: true,
+        },
+      });
+      getRootLayout()
+        .open(filterBottomsheet, {
           shadeCover: {
             color: "#000",
             opacity: 0.5,
@@ -96,22 +247,38 @@ export class LayersService {
               curve: DEFAULT_ANIMATION_CURVE,
             },
           },
-        });
-      }
-    );
-  }
-
-  closeQuickviewBottomsheet(): void {
-    if (this._quickviewBottomsheet) {
-      getRootLayout()
-        .close(this._quickviewBottomsheet)
+        })
         .then(() => {
-          this._quickviewBottomsheet = null;
           this._layers$.next({
             ...this.getLayersCurrentValue(),
-            quickviewBottomsheet: {
-              isOpen: false,
-              movieId: undefined,
+            filterBottomsheet: {
+              ...this.getLayersCurrentValue().filterBottomsheet,
+              isAnimating: false,
+            },
+          });
+        });
+    });
+  }
+
+  closeFilterBottomsheet(): void {
+    const filterBottomsheet = this.getLayersCurrentValue().filterBottomsheet
+      .view;
+    if (filterBottomsheet) {
+      this._layers$.next({
+        ...this.getLayersCurrentValue(),
+        filterBottomsheet: {
+          ...this.getLayersCurrentValue().filterBottomsheet,
+          isAnimating: true,
+        },
+      });
+      getRootLayout()
+        .close(filterBottomsheet)
+        .then(() => {
+          this._layers$.next({
+            ...this.getLayersCurrentValue(),
+            filterBottomsheet: {
+              view: null,
+              isAnimating: false,
             },
           });
         });
@@ -152,7 +319,16 @@ export interface Layers {
     isOpen: boolean;
   };
   quickviewBottomsheet: {
-    isOpen: boolean;
+    view: View;
+    isAnimating: boolean;
     movieId: number;
+  };
+  searchBottomsheet: {
+    isAnimating: boolean;
+    view: View;
+  };
+  filterBottomsheet: {
+    isAnimating: boolean;
+    view: View;
   };
 }

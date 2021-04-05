@@ -1,0 +1,40 @@
+<GridLayout verticalAlignment="bottom" rows="*" height="100%">
+
+    <ContentView (loaded)="shadeLoaded($event)" opacity="0" row="0" backgroundColor="rgba(0,0,0,0.3)" (tap)="close()">
+    </ContentView>
+
+    <GridLayout
+        row="0"
+        verticalAlignment="bottom"
+        rows="auto, auto, auto"
+        columns="*"
+        class="bg-color-default"
+        borderRadius="15 15 0 0">
+        
+        <Label row="0" col="0" text="FILTER" margin="25" fontSize="30" class="bold text-color-primary"></Label>
+
+        <StackLayout row="1" col="0" padding="0 25 20 25">
+            <Label text="Language" marginBottom="10" class="medium" fontSize="20"></Label>
+            <FlexboxLayout>
+                <ng-container *ngFor="let tag of languageTags">
+                    <ContentView marginRight="10">
+                        <ns-tag [tagText]="tag.text" [selected]="tag.selected"></ns-tag>
+                    </ContentView>
+                </ng-container>
+            </FlexboxLayout>
+
+            <Label text="Duration" margin="15 0 10 0" class="medium" fontSize="20"></Label>
+            <FlexboxLayout>
+                <ng-container *ngFor="let tag of durationTags">
+                    <ContentView marginRight="10">
+                        <ns-tag [tagText]="tag.text" [selected]="tag.selected"></ns-tag>
+                    </ContentView>
+                </ng-container>
+            </FlexboxLayout>
+        </StackLayout>
+
+        <GridLayout row="2" col="0" class="bg-color-primary" padding="15" (tap)="apply()">
+            <Label text="APPLY" textAlignment="center" fontSize="20" class="medium" color="#fff"></Label>
+        </GridLayout>
+    </GridLayout>
+</GridLayout>
