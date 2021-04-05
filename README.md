@@ -2,7 +2,10 @@
 
 > 🎬 Demo for [Nativescript Angular Speed Code Youtube Series](https://www.youtube.com/playlist?list=PL44i_PSsr5XyxSt5hzJazPw8HMaVcesVu)
 
-<img alt="movies app preview" src="https://github.com/williamjuan027/nativescript-movies-demo/blob/master/screenshots/movies-app-preview.gif" width="300">
+[![Nativescript](https://img.shields.io/badge/Nativescript-8-blue.svg?style=for-the-badge)]()
+[![Angular](https://img.shields.io/badge/Angular-11-red.svg?style=for-the-badge)]()
+
+<img alt="movies app preview" src="https://github.com/williamjuan027/nativescript-movies-demo/blob/master/screenshots/github-trailer.gif" width="500">
 
 ## Development
 
@@ -33,4 +36,3 @@ npm run start.ios
 
 npm run start.android
 ```
-
