@@ -1,0 +1,30 @@
+<ScrollView height="100%">
+    <StackLayout>
+        <ns-header [headerTitle]="(staticText$ | async)?.config?.title || 'SETTINGS'" hasMenuButton="true"></ns-header>
+
+    <StackLayout class="p-xl">
+        <Label [text]="(staticText$ | async)?.config?.description"></Label>
+    
+        <Label
+            [text]="(staticText$ | async)?.config?.dataUrlTitle || 'Data URL'"
+            class="font-size-h2 m-t-xl"></Label>
+        <TextField
+            hint="https://raw.githubusercontent.com/..."
+            [(ngModel)]="dataUrl"
+            class="font-size-h3 p-s m-t-s border-b-primary"></TextField>
+    
+        <Label
+            [text]="(staticText$ | async)?.config?.stylingUrlTitle || 'Styling URL'"
+            class="font-size-h2 m-t-xl"></Label>
+        <TextField
+            hint="https://raw.githubusercontent.com/..."
+            [(ngModel)]="stylingUrl"
+            class="font-size-h3 p-s m-t-s border-b-primary"></TextField>
+        
+        <Button
+            [text]="(staticText$ | async)?.config?.buttons?.update || 'UPDATE'"
+            (tap)="updateUrls()"
+            class="button-primary medium m-t-xl"></Button>
+        </StackLayout>
+    </StackLayout>
+</ScrollView>

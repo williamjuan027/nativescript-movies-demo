@@ -12,7 +12,7 @@
         <Label margin="-5 20 20 25" text="Luca" fontSize="40" class="bold text-color-gray"></Label>
 
         <ng-container *ngFor="let option of menuOptions">
-            <GridLayout columns="40, 10, *" rows="auto" padding="10 15 10 25">
+            <GridLayout columns="40, 10, *" rows="auto" padding="10 15 10 25" (tap)="option.onTap && option.onTap()">
                 <Label col="0" fontSize="25" [text]="option.icon" class="ionicons text-color-gray"></Label>
                 <Label col="2" fontSize="20" [text]="option.displayName" class="text-color-gray"></Label>
              </GridLayout>

@@ -5,10 +5,13 @@ import {
   NativeScriptModule,
   NativeScriptAnimationsModule,
   NativeScriptCommonModule,
+  NativeScriptHttpClientModule,
 } from "@nativescript/angular";
+import { NgxsModule } from "@ngxs/store";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { ConfigState } from "./core";
 import { SharedModule } from "./shared";
 
 @NgModule({
@@ -16,9 +19,11 @@ import { SharedModule } from "./shared";
   imports: [
     NativeScriptModule,
     NativeScriptCommonModule,
+    NativeScriptHttpClientModule,
     CommonModule,
     HttpClientModule,
     NativeScriptAnimationsModule,
+    NgxsModule.forRoot([ConfigState], { developmentMode: true }),
     AppRoutingModule,
     SharedModule,
   ],

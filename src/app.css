@@ -32,19 +32,103 @@
   content: "\f101";
 }
 
-/* Colors */
 .ns-root {
+  /* Colors */
   --color-primary: #65adf1;
+  --color-bg-default: #fefefe;
+
+  --color-text-on-primary: #fefefe;
   --color-text-default: #393838;
   --color-text-gray: #444;
-  --color-bg-default: #fefefe;
+
+  /* Spacing */
+  --spacing-xl: 25;
+  --spacing-l: 15;
+  --spacing-m: 10;
+  --spacing-s: 5;
+
+  /* Border Radius */
+  --border-radius-l: 15;
+  --border-radius-m: 10;
+  --border-radius-s: 5;
+
+  /* Font */
+  --font-size-h1: 25;
+  --font-size-h2: 20;
+  --font-size-h3: 18;
+
+  /* Shadows */
+  --box-shadow-default: 0 0 5px rgba(0, 0, 0, 0.8);
+  --text-shadow-default: 1px 1px 1px rgba(101, 173, 241, 0.8);
+}
+
+/* Spacing */
+.p-xl {
+  padding: var(--spacing-xl);
+}
+.p-l {
+  padding: var(--spacing-l);
+}
+.p-m {
+  padding: var(--spacing-m);
+}
+.p-s {
+  padding: var(--spacing-s);
+}
+
+.m-xl {
+  margin: var(--spacing-xl);
+}
+.m-l {
+  margin: var(--spacing-l);
+}
+.m-m {
+  margin: var(--spacing-m);
+}
+.m-s {
+  margin: var(--spacing-s);
+}
+.m-t-xl {
+  margin-top: var(--spacing-xl);
+}
+.m-t-l {
+  margin-top: var(--spacing-l);
+}
+.m-t-m {
+  margin-top: var(--spacing-m);
+}
+.m-t-s {
+  margin-top: var(--spacing-s);
+}
+
+/* Font */
+.font-size-h1 {
+  font-size: var(--font-size-h1);
+}
+
+.font-size-h2 {
+  font-size: var(--font-size-h2);
+}
+
+.font-size-h3 {
+  font-size: var(--font-size-h3);
+}
+
+/* Button */
+.button-primary {
+  font-size: var(--font-size-h3);
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+  padding: var(--spacing-l);
+  border-radius: var(--border-radius-m);
 }
 
 Page {
   background-color: var(--color-bg-default);
 }
 
-label {
+label,
+TextField {
   color: var(--color-text-default);
   font-family: "Poppins Regular", Poppins-Regular;
   font-weight: 400;
@@ -80,10 +164,15 @@ label {
   border-width: 1;
 }
 
+.border-b-primary {
+  border-bottom-color: var(--color-primary);
+  border-bottom-width: 1;
+}
+
 .glow-shadow {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--box-shadow-default);
 }
 
 .title {
-  text-shadow: 1px 1px 1px rgba(101, 173, 241, 0.8);
+  text-shadow: var(--text-shadow-default);
 }

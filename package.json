@@ -36,6 +36,7 @@
     "@nativescript/angular": "~11.8.0",
     "@nativescript/core": "~8.0.0",
     "@nativescript/theme": "~3.0.0",
+    "@ngxs/store": "^3.7.1",
     "nativescript-videoplayer": "^5.0.1",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.6.0",

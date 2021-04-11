@@ -3,23 +3,26 @@ import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "@nativescript/angular";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/home", pathMatch: "full" },
-    {
-        path: "home",
-        loadChildren: () =>
-            import("./features/home/home.module").then((m) => m.HomeModule),
-    },
-    {
-        path: "details",
-        loadChildren: () =>
-            import("./features/details/details.module").then(
-                (m) => m.DetailsModule
-            ),
-    },
+  { path: "", redirectTo: "/config", pathMatch: "full" },
+  {
+    path: "home",
+    loadChildren: () =>
+      import("./features/home/home.module").then((m) => m.HomeModule),
+  },
+  {
+    path: "details",
+    loadChildren: () =>
+      import("./features/details/details.module").then((m) => m.DetailsModule),
+  },
+  {
+    path: "config",
+    loadChildren: () =>
+      import("./features/config/config.module").then((m) => m.ConfigModule),
+  },
 ];
 
 @NgModule({
-    imports: [NativeScriptRouterModule.forRoot(routes)],
-    exports: [NativeScriptRouterModule],
+  imports: [NativeScriptRouterModule.forRoot(routes)],
+  exports: [NativeScriptRouterModule],
 })
 export class AppRoutingModule {}
