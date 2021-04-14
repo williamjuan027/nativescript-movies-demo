@@ -6,7 +6,9 @@ import {
   Icons,
   NavigationService,
   Routes,
+  ProductState,
 } from "@app/core";
+import { Select } from "@ngxs/store";
 
 @Component({
   moduleId: module.id,
@@ -14,10 +16,11 @@ import {
   templateUrl: "search-bottomsheet.component.html",
 })
 export class SearchBottomsheetComponent {
+  // @Select(ProductState.categories) categories$;
   icons = Icons;
 
-  categories$ = this.dataService.getCategories();
-  searchResult$ = this.dataService.getRecommendedMovies();
+  // categories$ = this.dataService.getCategories();
+  // searchResult$ = this.dataService.getRecommendedMovies();
 
   constructor(
     private dataService: DataService,

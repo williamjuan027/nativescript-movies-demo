@@ -17,11 +17,11 @@ export class QuickviewBottomsheetComponent {
   state$ = this.layersService
     .getLayers$()
     .pipe(map((layers) => layers.quickviewBottomsheet));
-  movieDetails$ = this.state$.pipe(
-    map((state) => state.movieId),
-    tap((movieId) => (this._movieId = movieId)),
-    switchMap((movieId) => this.dataService.getMovieById(movieId))
-  );
+  // movieDetails$ = this.state$.pipe(
+  //   map((state) => state.movieId),
+  //   tap((movieId) => (this._movieId = movieId)),
+  //   switchMap((movieId) => this.dataService.getMovieById(movieId))
+  // );
 
   icons = Icons;
   private _movieId;

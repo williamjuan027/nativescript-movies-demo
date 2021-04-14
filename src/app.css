@@ -169,6 +169,16 @@ TextField {
   border-bottom-width: 1;
 }
 
+.border-radius-l {
+  border-radius: var(--border-radius-l);
+}
+.border-radius-m {
+  border-radius: var(--border-radius-m);
+}
+.border-radius-s {
+  border-radius: var(--border-radius-s);
+}
+
 .glow-shadow {
   box-shadow: var(--box-shadow-default);
 }

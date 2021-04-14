@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Page, EventData } from "@nativescript/core";
+import { BehaviorSubject } from "rxjs";
 import { map, switchMap } from "rxjs/operators";
 import {
   DataService,
@@ -19,19 +20,20 @@ import {
 export class DetailsComponent {
   icons = Icons;
 
-  movieId$ = this.activatedRoute.params.pipe(map((params) => params.id));
-  movieDetails$ = this.movieId$.pipe(
-    switchMap((id) => this.dataService.getMovieById(id))
-  );
-  relatedMovies$ = this.movieId$.pipe(
-    switchMap((id) => this.dataService.getRelatedMoviesById(id))
-  );
+  movieDetails$ = new BehaviorSubject({});
+  // movieId$ = this.activatedRoute.params.pipe(map((params) => params.id));
+  // movieDetails$ = this.movieId$.pipe(
+  //   switchMap((id) => this.dataService.getMovieById(id))
+  // );
+  // relatedMovies$ = this.movieId$.pipe(
+  //   switchMap((id) => this.dataService.getRelatedMoviesById(id))
+  // );
 
   constructor(
     private page: Page,
     private activatedRoute: ActivatedRoute,
     private dataService: DataService,
-    private navigationService: NavigationService,
+    private navigationService: NavigationService
   ) {
     this.page.actionBarHidden = true;
   }

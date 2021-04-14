@@ -48,24 +48,24 @@
         orientation="horizontal"
         width="100%">
         <StackLayout orientation="horizontal" padding="10 25">
-            <ng-container *ngFor="let category of (categories$ | async)">
+            <!-- <ng-container *ngFor="let category of (categories$ | async)">
                 <ContentView marginRight="10">
                     <ns-tag [tagText]="category.displayName"></ns-tag>
                 </ContentView>
-            </ng-container>
+            </ng-container> -->
         </StackLayout>
     </ScrollView>
 
     <ScrollView row="3" col="0" colSpan="2" height="400">
         <StackLayout margin="10 25 25 25">
-            <ng-container *ngFor="let movie of (searchResult$ | async)">
+            <!-- <ng-container *ngFor="let movie of (searchResult$ | async)">
                 <ContentView marginBottom="10">
                     <ns-search-card
                         [title]="movie.title"
                         [imageSrc]="movie.image.thumbnail"
                         [description]="movie.description"></ns-search-card>
                 </ContentView>
-            </ng-container>
+            </ng-container> -->
         </StackLayout>
     </ScrollView>
 

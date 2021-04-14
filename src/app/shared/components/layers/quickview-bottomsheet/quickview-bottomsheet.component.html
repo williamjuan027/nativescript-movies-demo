@@ -7,7 +7,7 @@
     class="bg-color-default"
     borderRadius="15 15 0 0">
     
-    <ng-container *ngIf="movieDetails$ | async as movieDetails">
+    <!-- <ng-container *ngIf="movieDetails$ | async as movieDetails">
         <ContentView row="0" col="0">
             <ns-thumbnail-card [imageSrc]="movieDetails.image.thumbnail"></ns-thumbnail-card>
         </ContentView>
@@ -15,7 +15,7 @@
             <Label [text]="movieDetails.title" fontSize="30" class="bold" textWrap="true"></Label>
             <Label [text]="movieDetails.description.substring(0, 90) + '...'" textWrap="true" fontSize="18" class="text-color-gray"></Label>
         </StackLayout>
-    </ng-container>
+    </ng-container> -->
 
     <GridLayout row="1" col="0" rows="auto" columns="auto, *" colSpan="2" borderTopWidth="1" borderTopColor="#444" padding="10 5 0 5">
         <Label col="0" [text]="icons.info" fontSize="20" marginRight="5" class="ionicons text-color-gray"></Label>

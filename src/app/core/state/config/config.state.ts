@@ -1,16 +1,18 @@
 import { Injectable } from "@angular/core";
-import { State, Action, StateContext, Selector } from "@ngxs/store";
+import { State, Action, StateContext, Selector, Store } from "@ngxs/store";
 import { catchError, tap } from "rxjs/operators";
 import { ApiService, StylingService } from "@app/core";
 import { Config } from "./config.actions";
 import { ConfigStateModel } from "./config.model";
 import { of } from "rxjs";
+import { Product } from "../product";
 
 @State<ConfigStateModel>({
   name: "config",
   defaults: {
     // sample data urls:
-    // default: https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/data/
+    // default: https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/data/default/
+    // travel: https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/data/travel/
     // indo: https://raw.githubusercontent.com/williamjuan027/movies-app-api/translate/indo/data/
     dataUrl: "",
     // sample styling urls:
@@ -27,7 +29,8 @@ import { of } from "rxjs";
 export class ConfigState {
   constructor(
     private apiService: ApiService,
-    private stylingService: StylingService
+    private stylingService: StylingService,
+    private store: Store
   ) {}
 
   @Action(Config.UpdateDataUrl)
@@ -36,12 +39,21 @@ export class ConfigState {
     action: Config.UpdateDataUrl
   ) {
     const state = ctx.getState();
-    ctx.setState({
-      ...state,
-      dataUrl: action.url,
-    });
-    // TODO: load from products too, and pass in urls
-    return ctx.dispatch(new Config.UpdateStaticText());
+    if (action.url) {
+      ctx.setState({
+        ...state,
+        dataUrl: action.url,
+      });
+
+      // TODO: there is a race condition if the dispatch happens at the same time
+      this.store
+        .dispatch(new Product.LoadCategories(action.url))
+        .toPromise()
+        .then(() =>
+          this.store.dispatch(new Product.LoadProductGroups(action.url))
+        );
+      return ctx.dispatch([new Config.UpdateStaticText()]);
+    }
   }
 
   @Action(Config.UpdateStylingUrl)
@@ -50,20 +62,21 @@ export class ConfigState {
     action: Config.UpdateStylingUrl
   ) {
     const state = ctx.getState();
-    ctx.setState({
-      ...state,
-      stylingUrl: action.url,
-    });
-
-    return this.apiService.getRemoteStyles$(action.url).pipe(
-      tap((style) => {
-        this.stylingService.updateAppCSS(style);
-      }),
-      catchError((err) => {
-        console.log("error loading remote style", err);
-        return of(err);
-      })
-    );
+    if (action.url) {
+      ctx.setState({
+        ...state,
+        stylingUrl: action.url,
+      });
+      return this.apiService.getRemoteStyles$(action.url).pipe(
+        tap((style) => {
+          this.stylingService.updateAppCSS(style);
+        }),
+        catchError((err) => {
+          console.log("error loading remote style", err);
+          return of(err);
+        })
+      );
+    }
   }
 
   @Action(Config.UpdateStaticText)

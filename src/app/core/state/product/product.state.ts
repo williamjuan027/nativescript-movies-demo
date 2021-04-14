@@ -1,45 +1,82 @@
 import { Injectable } from "@angular/core";
+import { of } from "rxjs";
+import { tap, catchError } from "rxjs/operators";
 import { State, Action, StateContext, Selector } from "@ngxs/store";
+import { ApiService, ICategory, IProductGroup } from "@app/core";
 import { Product } from "./product.actions";
 import { ProductStateModel } from "./product.model";
+import categories from "../../../../assets/local-data/categories.json";
+import productGroups from "../../../../assets/local-data/productGroups.json";
 
 @State<ProductStateModel>({
   name: "product",
   defaults: {
-    categories: [], // TODO: add fallback here?
-    productGroups: [],
+    categories: <ICategory[]>categories.categories,
+    productGroups: <IProductGroup[]>productGroups.productGroups,
   },
 })
 @Injectable()
 export class ProductState {
-  //   @Action(Config.UpdateDataUrl)
-  //   updateDataUrl(
-  //     ctx: StateContext<ConfigStateModel>,
-  //     action: Config.UpdateDataUrl
-  //   ) {
-  //     const state = ctx.getState();
-  //     ctx.setState({
-  //       ...state,
-  //       dataUrl: action.url,
-  //     });
-  //   }
-  //   @Action(Config.UpdateStylingUrl)
-  //   updateStylingUrl(
-  //     ctx: StateContext<ConfigStateModel>,
-  //     action: Config.UpdateStylingUrl
-  //   ) {
-  //     const state = ctx.getState();
-  //     ctx.setState({
-  //       ...state,
-  //       stylingUrl: action.url,
-  //     });
-  //   }
-  //   @Selector()
-  //   static dataUrl(state: ConfigStateModel) {
-  //     return state.dataUrl;
-  //   }
-  //   @Selector()
-  //   static stylingUrl(state: ConfigStateModel) {
-  //     return state.stylingUrl;
-  //   }
+  constructor(private apiService: ApiService) {}
+
+  @Action(Product.LoadCategories)
+  loadCategories(
+    ctx: StateContext<ProductStateModel>,
+    action: Product.LoadCategories
+  ) {
+    const state = ctx.getState();
+    return this.apiService.getCategories$(action.url).pipe(
+      tap((categories: ICategory[]) => {
+        ctx.setState({
+          ...state,
+          categories: categories,
+        });
+      }),
+      catchError((err) => {
+        console.log("error loading categories", err);
+        return of(err);
+      })
+    );
+  }
+
+  @Action(Product.LoadProductGroups)
+  loadProductGroups(
+    ctx: StateContext<ProductStateModel>,
+    action: Product.LoadProductGroups
+  ) {
+    const state = ctx.getState();
+    return this.apiService.getProductGroups$(action.url).pipe(
+      tap((productGroups: IProductGroup[]) => {
+        ctx.setState({
+          ...state,
+          productGroups: productGroups,
+        });
+      }),
+      catchError((err) => {
+        console.log("error loading product groups", err);
+        return of(err);
+      })
+    );
+  }
+
+  @Selector()
+  static categories(state: ProductStateModel) {
+    return state.categories;
+  }
+
+  @Selector()
+  static productGroups(state: ProductStateModel) {
+    return (
+      state.productGroups?.filter((group) => group.groupKey !== "featured") ||
+      []
+    );
+  }
+
+  @Selector()
+  static featuredProduct(state: ProductStateModel) {
+    return (
+      state.productGroups?.find((group) => group.groupKey === "featured")
+        ?.products?.[0] || undefined
+    );
+  }
 }

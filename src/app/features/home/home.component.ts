@@ -1,12 +1,13 @@
 import { Component } from "@angular/core";
-import { map } from "rxjs/operators";
+import { Page } from "@nativescript/core";
+import { Select } from "@ngxs/store";
 import {
-  DataService,
+  ConfigState,
+  ProductState,
   Icons,
   LayersService,
   SlideUpFadeStagger,
 } from "@app/core";
-import { Page } from "@nativescript/core";
 
 @Component({
   moduleId: module.id,
@@ -15,28 +16,21 @@ import { Page } from "@nativescript/core";
   animations: [SlideUpFadeStagger],
 })
 export class HomeComponent {
-  categories$ = this.dataService.getCategories();
-  // get just the first featured movie for now, we might want to add a carousel later
-  featuredMovie$ = this.dataService
-    .getFeaturedMovies()
-    .pipe(map((movies) => movies[0]));
-  favoriteMovies$ = this.dataService.getFavoriteMovies();
-  recommendedMovies$ = this.dataService.getRecommendedMovies();
+  @Select(ConfigState.staticText) staticText$;
+  @Select(ProductState.categories) categories$;
+  @Select(ProductState.productGroups) productGroups$;
+  @Select(ProductState.featuredProduct) featuredProduct$;
 
   headerRightActionButton = {
     icon: Icons.search,
     onTap: () => this.layersService.openSearchBottomsheet(),
   };
 
-  constructor(
-    private page: Page,
-    private dataService: DataService,
-    private layersService: LayersService
-  ) {
+  constructor(private page: Page, private layersService: LayersService) {
     this.page.actionBarHidden = true;
   }
 
-  navigateToMovieDetails(id: number): void {
+  openProductDetails(id: number): void {
     this.layersService.openQuickviewBottomsheet(id);
   }
 }

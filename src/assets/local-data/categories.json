@@ -3,27 +3,32 @@
         {
             "displayName": "Action",
             "categoryKey": "action",
-            "image": "~/assets/images/categories/action.png"
+            "image": "~/assets/images/categories/action.png",
+            "tinted": true
         },
         {
             "displayName": "Adventure",
             "categoryKey": "adventure",
-            "image": "~/assets/images/categories/adventure.png"
+            "image": "~/assets/images/categories/adventure.png",
+            "tinted": true
         },
         {
             "displayName": "Drama",
             "categoryKey": "drama",
-            "image": "~/assets/images/categories/drama.png"
+            "image": "~/assets/images/categories/drama.png",
+            "tinted": true
         },
         {
             "displayName": "Family",
             "categoryKey": "family",
-            "image": "~/assets/images/categories/family.png"
+            "image": "~/assets/images/categories/family.png",
+            "tinted": true
         },
         {
             "displayName": "Romance",
             "categoryKey": "romance",
-            "image": "~/assets/images/categories/romance.png"
+            "image": "~/assets/images/categories/romance.png",
+            "tinted": true
         }
     ]
 }

@@ -50,7 +50,7 @@
 
                 <!-- related -->
                 <Label *ngIf="true" text="Related" margin="10 20 0 20" class="bold" fontSize="18"></Label>
-                <ng-container *ngIf="relatedMovies$ | async as movies">
+                <!-- <ng-container *ngIf="relatedMovies$ | async as movies">
                     <ScrollView orientation="horizontal" height="168" scrollBarIndicatorVisible="false">
                         <StackLayout orientation="horizontal" padding="10 20">
                             <ng-container *ngFor="let movie of movies">
@@ -60,7 +60,7 @@
                             </ng-container>
                         </StackLayout>
                     </ScrollView>
-                </ng-container>
+                </ng-container> -->
             </StackLayout>
         </StackLayout>
     </ng-container>

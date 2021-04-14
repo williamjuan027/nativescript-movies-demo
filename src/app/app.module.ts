@@ -11,7 +11,7 @@ import { NgxsModule } from "@ngxs/store";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { ConfigState } from "./core";
+import { ConfigState, ProductState } from "./core";
 import { SharedModule } from "./shared";
 
 @NgModule({
@@ -23,7 +23,7 @@ import { SharedModule } from "./shared";
     CommonModule,
     HttpClientModule,
     NativeScriptAnimationsModule,
-    NgxsModule.forRoot([ConfigState], { developmentMode: true }),
+    NgxsModule.forRoot([ConfigState, ProductState], { developmentMode: true }),
     AppRoutingModule,
     SharedModule,
   ],

@@ -13,4 +13,5 @@ export interface IProduct {
     thumbnail: string;
     cover: string;
   };
+  tinted?: boolean;
 }

@@ -1,0 +1,209 @@
+{
+    "productGroups": [
+        {
+            "displayName": "Featured",
+            "groupKey": "featured",
+            "products": [
+                {
+                    "id": 1,
+                    "title": "Avengers: Endgame",
+                    "description": "With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+                    "keyInformation": [
+                        {
+                            "year": "2019"    
+                        },
+                        {
+                            "country": "USA"
+                        },
+                        {
+                            "duration": 181
+                        }
+                    ],
+                    "rating": 4,
+                    "categories": ["action", "adventure", "drama"],
+                    "groups": ["featured"],
+                    "tinted": true,
+                    "related": [],
+                    "image": {
+                        "thumbnail": "",
+                        "cover": "https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/data/default/images/products/avengers-endgame-cover.png"
+                    }
+                }
+            ]
+        },
+        {
+            "displayName": "My List",
+            "groupKey": "favorite",
+            "products": [
+                {
+                    "id": 2,
+                    "title": "Frozen",
+                    "description": "When the newly crowned Queen Elsa accidentally uses her power to turn things into ice to curse her home in infinite winter, her sister Anna teams up with a mountain man, his playful reindeer, and a snowman to change the weather condition.",
+                    "keyInformation": [
+                        {
+                            "year": "2013"    
+                        },
+                        {
+                            "country": "USA"
+                        },
+                        {
+                            "duration": 102
+                        }
+                    ],
+                    "rating": 4,
+                    "categories": ["animation", "adventure", "comedy"],
+                    "groups": ["recommended"],
+                    "related": [],
+                    "image": {
+                        "thumbnail": "https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/data/default/images/products/frozen.png",
+                        "cover": "https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/data/default/images/products/frozen-cover.png"
+                    }
+                },
+                {
+                    "id": 4,
+                    "title": "Home Alone",
+                    "description": "An eight-year-old troublemaker must protect his house from a pair of burglars when he is accidentally left home alone by his family during Christmas vacation.",
+                    "keyInformation": [
+                        {
+                            "year": "1990"    
+                        },
+                        {
+                            "country": "USA"
+                        },
+                        {
+                            "duration": 103
+                        }
+                    ],
+                    "rating": 4,
+                    "categories": ["comedy", "family"],
+                    "groups": ["recommended"],
+                    "related": [],
+                    "image": {
+                        "thumbnail": "https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/data/default/images/products/home-alone.png"
+                    }
+                },
+                {
+                    "id": 5,
+                    "title": "Jurassic Park",
+                    "description": "A pragmatic paleontologist visiting an almost complete theme park is tasked with protecting a couple of kids after a power failure causes the park's cloned dinosaurs to run loose.",
+                    "keyInformation": [
+                        {
+                            "year": "1993"    
+                        },
+                        {
+                            "country": "USA"
+                        },
+                        {
+                            "duration": 127
+                        }
+                    ],
+                    "rating": 4,
+                    "categories": ["action", "adventure", "sci-fi"],
+                    "groups": ["recommended"],
+                    "related": [],
+                    "image": {
+                        "thumbnail": "https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/data/default/images/products/jurassic-park.png"
+                    }
+                },
+                {
+                    "id": 6,
+                    "title": "Kung Fu Panda",
+                    "description": "The Dragon Warrior has to clash against the savage Tai Lung as China's fate hangs in the balance. However, the Dragon Warrior mantle is supposedly mistaken to be bestowed upon an obese panda who is a novice in martial arts.",
+                    "keyInformation": [
+                        {
+                            "year": "2008"    
+                        },
+                        {
+                            "country": "USA"
+                        },
+                        {
+                            "duration": 92
+                        }
+                    ],
+                    "rating": 4,
+                    "categories": ["animation", "action", "adventure"],
+                    "groups": ["favorite"],
+                    "related": [],
+                    "image": {
+                        "thumbnail": "https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/data/default/images/products/kungfu-panda.png"
+                    }
+                }
+            ]
+        },
+        {
+            "displayName": "Recommendations",
+            "groupKey": "recommendations",
+            "products": [
+                {
+                    "id": 7,
+                    "title": "Lady and the Tramp",
+                    "description": "The romantic tale of a sheltered uptown Cocker Spaniel dog and a streetwise downtown Mutt.",
+                    "keyInformation": [
+                        {
+                            "year": "2019"    
+                        },
+                        {
+                            "country": "USA"
+                        },
+                        {
+                            "duration": 121
+                        }
+                    ],
+                    "rating": 3,
+                    "categories": ["adventure", "comedy", "drama"],
+                    "groups": ["favorite"],
+                    "related": [],
+                    "image": {
+                        "thumbnail": "https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/data/default/images/products/lady-and-the-tramp.png"
+                    }
+                },
+                {
+                    "id": 8,
+                    "title": "Ratatouille",
+                    "description": "A rat who can cook makes an unusual alliance with a young kitchen worker at a famous restaurant.",
+                    "keyInformation": [
+                        {
+                            "year": "2007"    
+                        },
+                        {
+                            "country": "USA"
+                        },
+                        {
+                            "duration": 120
+                        }
+                    ],
+                    "rating": 4,
+                    "categories": ["action", "adventure", "comedy"],
+                    "groups": ["favorite"],
+                    "related": [],
+                    "image": {
+                        "thumbnail": "https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/data/default/images/products/ratatouille.png"
+                    }
+                },
+                {
+                    "id": 9,
+                    "title": "Twilight",
+                    "description": "When Bella Swan moves to a small town in the Pacific Northwest, she falls in love with Edward Cullen, a mysterious classmate who reveals himself to be a 108-year-old vampire.",
+                    "keyInformation": [
+                        {
+                            "year": "2008"    
+                        },
+                        {
+                            "country": "USA"
+                        },
+                        {
+                            "duration": 122
+                        }
+                    ],
+                    "rating": 4,
+                    "categories": ["drama", "fantasy", "romance"],
+                    "groups": ["recommended", "favorite"],
+                    "related": [],
+                    "image": {
+                        "thumbnail": "https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/data/default/images/products//twilight.png"
+                    }
+                }
+            ]       
+        }
+    ]
+}

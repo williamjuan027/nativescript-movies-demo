@@ -1,15 +1,9 @@
 import { Component } from "@angular/core";
-import { map } from "rxjs/operators";
-import { Select, Store } from "@ngxs/store";
-import {
-  DataService,
-  Icons,
-  LayersService,
-  Config,
-  SlideUpFadeStagger,
-  ConfigState,
-} from "@app/core";
 import { Page } from "@nativescript/core";
+import { Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
+import { Select, Store } from "@ngxs/store";
+import { Config, SlideUpFadeStagger, ConfigState } from "@app/core";
 
 @Component({
   moduleId: module.id,
@@ -22,23 +16,34 @@ export class ConfigComponent {
   dataUrl;
   stylingUrl;
 
-  constructor(private store: Store) {
-    this.store.selectOnce(ConfigState.dataUrl).subscribe((stateDataUrl) => {
-      this.dataUrl = stateDataUrl;
-    });
+  private _destroy$ = new Subject();
+  constructor(private page: Page, private store: Store) {
+    this.page.actionBarHidden = true;
     this.store
-      .selectOnce(ConfigState.stylingUrl)
+      .select(ConfigState.dataUrl)
+      .pipe(takeUntil(this._destroy$))
+      .subscribe((stateDataUrl) => {
+        this.dataUrl = stateDataUrl;
+      });
+    this.store
+      .select(ConfigState.stylingUrl)
+      .pipe(takeUntil(this._destroy$))
       .subscribe((stateStylingUrl) => {
         this.stylingUrl = stateStylingUrl;
       });
   }
 
+  ngOnDestroy(): void {
+    this._destroy$.next(true);
+    this._destroy$.complete();
+  }
+
   updateUrls(): void {
-    if (this.dataUrl) {
-      this.store.dispatch(new Config.UpdateDataUrl(this.dataUrl));
-    }
-    if (this.stylingUrl) {
-      this.store.dispatch(new Config.UpdateStylingUrl(this.stylingUrl));
-    }
+    this.store
+      .dispatch(new Config.UpdateDataUrl(this.dataUrl))
+      .toPromise()
+      .then(() => {
+        this.store.dispatch(new Config.UpdateStylingUrl(this.stylingUrl));
+      });
   }
 }
