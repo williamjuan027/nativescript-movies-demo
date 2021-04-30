@@ -16,7 +16,7 @@
                     <Label [text]="movie.title | uppercase" class="bold" fontSize="20" color="#fff"></Label>
                     <Label [text]="movie.description" fontSize="15" color="#ddd" marginTop="7" textWrap="true"></Label>
 
-                    <Button text="PLAY NOW" marginTop="20" horizontalAlignment="left" class="bg-color-primary bold glow-shadow" padding="15 0"
+                    <Button text="PLAY NOW" marginTop="20" horizontalAlignment="left" class="bg-color-primary bold glow-shadow" [padding]="ios ? '15 0' : '5 0 0 0'"
                     width="150" color="#fff" fontSize="14"></Button>
                 </StackLayout>
             </GridLayout>
@@ -33,8 +33,7 @@
                             <!-- mask -->
                             <ContentView class="bg-color-primary" opacity="0.7"></ContentView>
 
-                            <Label [text]="category.displayName | uppercase" color="#fff" class="bold" fontSize="17"
-                                textAlignment="center"></Label>
+                            <Label [text]="category.displayName | uppercase" color="#fff" class="bold v-center text-center" fontSize="17"></Label>
                         </GridLayout>
                     </ng-container>
                 </StackLayout>

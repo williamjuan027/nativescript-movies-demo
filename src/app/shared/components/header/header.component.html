@@ -1,9 +1,10 @@
 <GridLayout
     verticalAlignment="top"
-    height="60"
+    [height]="ios ? 60 : 82"
     row="0"
     rows="*"
-    columns="60, *, auto, *, 60">
+    columns="60, *, auto, *, 60"
+    [padding]="ios ? '0' : '22 0 0'">
     <ng-container *ngIf="hasBackButton">
         <GridLayout
             row="0"

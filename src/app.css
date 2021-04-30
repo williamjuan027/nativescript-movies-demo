@@ -9,22 +9,22 @@
 }
 
 .bold {
-  font-family: "Poppins Bold", Poppins-Bold;
+  font-family: "Poppins Bold", "Poppins-Bold";
   font-weight: 700;
 }
 
 .medium {
-  font-family: "Poppins Medium", Poppins-Medium;
+  font-family: "Poppins Medium", "Poppins-Medium";
   font-weight: 500;
 }
 
 .regular {
-  font-family: "Poppins Regular", Poppins-Regular;
+  font-family: "Poppins Regular", "Poppins-Regular";
   font-weight: 400;
 }
 
 .light {
-  font-family: "Poppins Light", Poppins-Light;
+  font-family: "Poppins Light", "Poppins-Light";
   font-weight: 300;
 }
 
@@ -40,7 +40,7 @@
   --color-bg-default: #fefefe;
 }
 
-Label {
+label {
   color: var(--color-text-default);
   font-family: "Poppins Regular", Poppins-Regular;
   font-weight: 400;
@@ -63,9 +63,21 @@ Label {
 }
 
 .glow-shadow {
-  box-shadow: 0 0 5px rgba(0,0,0,.8);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
 .title {
-  text-shadow: 1px 1px 1px rgba(101, 173, 241, .8);
+  text-shadow: 1px 1px 1px rgba(101, 173, 241, 0.8);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.v-center {
+  vertical-align: middle;
+}
+
+.h-center {
+  horizontal-alignment: center;
 }

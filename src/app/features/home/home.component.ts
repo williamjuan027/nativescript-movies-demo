@@ -5,7 +5,7 @@ import {
   LayersService,
   SlideUpFadeStagger,
 } from "@app/core";
-import { EventData, Page } from "@nativescript/core";
+import { EventData, isIOS, Page } from "@nativescript/core";
 
 @Component({
   moduleId: module.id,
@@ -21,6 +21,7 @@ export class HomeComponent {
     .pipe(map((movies) => movies[0]));
   favoriteMovies$ = this.dataService.getFavoriteMovies();
   recommendedMovies$ = this.dataService.getRecommendedMovies();
+  ios = isIOS;
 
   constructor(
     private page: Page,

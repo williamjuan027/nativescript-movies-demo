@@ -15,14 +15,14 @@
     "{N}",
     "template"
   ],
-  "repository": "<fill-your-repository-here>",
+  "repository": "https://github.com/williamjuan027/nativescript-movies-demo",
   "bugs": {
-    "url": "https://github.com/NativeScript/NativeScript/issues"
+    "url": "https://github.com/williamjuan027/nativescript-movies-demo/issues"
   },
   "scripts": {
     "clean": "ns clean",
-    "start.ios": "ns run ios",
-    "start.android": "ns run android --no-hmr"
+    "start.ios": "ns debug ios --no-hmr",
+    "start.android": "ns debug android --no-hmr"
   },
   "dependencies": {
     "@angular/animations": "~11.2.7",
