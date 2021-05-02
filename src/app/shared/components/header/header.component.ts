@@ -1,5 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { Icons, LayersService, NavigationService } from "@app/core";
+import { isIOS } from "@nativescript/core";
 
 @Component({
   moduleId: module.id,
@@ -16,6 +17,7 @@ export class HeaderComponent {
   };
 
   icons = Icons;
+  ios = isIOS;
 
   constructor(
     private navigationService: NavigationService,

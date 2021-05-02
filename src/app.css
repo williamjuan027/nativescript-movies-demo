@@ -9,22 +9,22 @@
 }
 
 .bold {
-  font-family: "Poppins Bold", Poppins-Bold;
+  font-family: "Poppins Bold", "Poppins-Bold";
   font-weight: 700;
 }
 
 .medium {
-  font-family: "Poppins Medium", Poppins-Medium;
+  font-family: "Poppins Medium", "Poppins-Medium";
   font-weight: 500;
 }
 
 .regular {
-  font-family: "Poppins Regular", Poppins-Regular;
+  font-family: "Poppins Regular", "Poppins-Regular";
   font-weight: 400;
 }
 
 .light {
-  font-family: "Poppins Light", Poppins-Light;
+  font-family: "Poppins Light", "Poppins-Light";
   font-weight: 300;
 }
 
@@ -185,4 +185,16 @@ TextField {
 
 .title {
   text-shadow: var(--text-shadow-default);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.v-center {
+  vertical-align: middle;
+}
+
+.h-center {
+  horizontal-align: center;
 }

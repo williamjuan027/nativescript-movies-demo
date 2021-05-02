@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Page } from "@nativescript/core";
+import { Page, isIOS } from "@nativescript/core";
 import { Select } from "@ngxs/store";
 import {
   ConfigState,
@@ -20,6 +20,7 @@ export class HomeComponent {
   @Select(ProductState.categories) categories$;
   @Select(ProductState.productGroups) productGroups$;
   @Select(ProductState.featuredProduct) featuredProduct$;
+  ios = isIOS;
 
   headerRightActionButton = {
     icon: Icons.search,
