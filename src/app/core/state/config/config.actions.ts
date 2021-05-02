@@ -9,6 +9,10 @@ export namespace Config {
     constructor(public url: string) {}
   }
 
+  export class UpdateStyleOptions {
+    static readonly type = "[Config] Update Style Options";
+  }
+
   export class UpdateStaticText {
     static readonly type = "[Config] Update Static Text";
   }

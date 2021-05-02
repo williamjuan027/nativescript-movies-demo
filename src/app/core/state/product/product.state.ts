@@ -1,7 +1,13 @@
 import { Injectable } from "@angular/core";
 import { of } from "rxjs";
 import { tap, catchError } from "rxjs/operators";
-import { State, Action, StateContext, Selector } from "@ngxs/store";
+import {
+  State,
+  Action,
+  StateContext,
+  Selector,
+  createSelector,
+} from "@ngxs/store";
 import { ApiService, ICategory, IProductGroup } from "@app/core";
 import { Product } from "./product.actions";
 import { ProductStateModel } from "./product.model";
@@ -66,6 +72,7 @@ export class ProductState {
 
   @Selector()
   static productGroups(state: ProductStateModel) {
+    // filter out featured temporarily
     return (
       state.productGroups?.filter((group) => group.groupKey !== "featured") ||
       []
@@ -78,5 +85,16 @@ export class ProductState {
       state.productGroups?.find((group) => group.groupKey === "featured")
         ?.products?.[0] || undefined
     );
+  }
+
+  static productById(productId: number) {
+    return createSelector([ProductState], (state: ProductStateModel) => {
+      return state.productGroups
+        .reduce((products, productGroups) => {
+          products.push(...productGroups.products);
+          return products;
+        }, [])
+        .find((product) => product.id === productId);
+    });
   }
 }

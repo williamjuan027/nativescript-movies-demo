@@ -4,7 +4,10 @@
         <ns-header [headerTitle]="(staticText$ | async)?.mainHeaderTitle || 'MOVIES'" hasMenuButton="true" [rightActionButton]="headerRightActionButton"></ns-header>
     </ContentView>
 
-    <ScrollView row="1" height="90%">
+    <ScrollView
+        row="1"
+        height="100%"
+        iosOverflowSafeAreaEnabled="false">
         <StackLayout @slideUpFadeStagger>
         
             <!-- featured -->
@@ -65,7 +68,7 @@
                 <ScrollView orientation="horizontal" scrollBarIndicatorVisible="false">
                     <StackLayout orientation="horizontal" padding="10 20">
                         <ng-container *ngFor="let product of group.products">
-                            <ContentView (tap)="openProductDetails(product.id)">
+                            <ContentView verticalAlignment="bottom" (tap)="openProductDetails(product.id)">
                                 <ns-thumbnail-card [imageSrc]="product.image.thumbnail"></ns-thumbnail-card>
                             </ContentView>
                         </ng-container>

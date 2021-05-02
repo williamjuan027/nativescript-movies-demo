@@ -16,4 +16,5 @@ export const Icons = {
   share: String.fromCharCode(0xf51a),
   filter: String.fromCharCode(0xf2f5),
   search: String.fromCharCode(0xf505),
+  check: String.fromCharCode(0xf207),
 };

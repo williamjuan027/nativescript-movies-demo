@@ -22,6 +22,7 @@ import { Product } from "../product";
     // netflix: https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/styles/netflix.css
     // airbnb: https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/styles/airbnb.css
     stylingUrl: "",
+    styleOptions: [],
     staticText: undefined,
   },
 })
@@ -79,6 +80,26 @@ export class ConfigState {
     }
   }
 
+  @Action(Config.UpdateStyleOptions)
+  updateStyleOptions(
+    ctx: StateContext<ConfigStateModel>,
+    action: Config.UpdateStyleOptions
+  ) {
+    const state = ctx.getState();
+    return this.apiService.getRemoteStylesOptions$().pipe(
+      tap((styleOptions) => {
+        ctx.setState({
+          ...state,
+          styleOptions: styleOptions,
+        });
+      }),
+      catchError((err) => {
+        console.log("error loading style options", err);
+        return of(err);
+      })
+    );
+  }
+
   @Action(Config.UpdateStaticText)
   updateStaticText(ctx: StateContext<ConfigStateModel>) {
     const state = ctx.getState();
@@ -110,5 +131,10 @@ export class ConfigState {
   @Selector()
   static staticText(state: ConfigStateModel) {
     return state.staticText;
+  }
+
+  @Selector()
+  static styleOptions(state: ConfigStateModel) {
+    return state.styleOptions;
   }
 }

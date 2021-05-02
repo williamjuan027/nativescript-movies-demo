@@ -1,5 +1,5 @@
 <GridLayout
-    (tap)="navigateToMovieDetails()"
+    (tap)="navigateToProductDetails()"
     verticalAlignment="bottom"
     padding="20"
     rows="auto, auto"
@@ -7,17 +7,24 @@
     class="bg-color-default"
     borderRadius="15 15 0 0">
     
-    <!-- <ng-container *ngIf="movieDetails$ | async as movieDetails">
+    <ng-container *ngIf="productDetails$ | async as productDetails">
         <ContentView row="0" col="0">
-            <ns-thumbnail-card [imageSrc]="movieDetails.image.thumbnail"></ns-thumbnail-card>
+            <ns-thumbnail-card [imageSrc]="productDetails.image.thumbnail"></ns-thumbnail-card>
         </ContentView>
         <StackLayout row="0" col="1" padding="10 10 15 10">
-            <Label [text]="movieDetails.title" fontSize="30" class="bold" textWrap="true"></Label>
-            <Label [text]="movieDetails.description.substring(0, 90) + '...'" textWrap="true" fontSize="18" class="text-color-gray"></Label>
+            <Label [text]="productDetails.title" fontSize="30" class="bold" textWrap="true"></Label>
+            <Label [text]="productDetails.description.substring(0, 90) + '...'" textWrap="true" fontSize="18" class="text-color-gray"></Label>
         </StackLayout>
-    </ng-container> -->
+    </ng-container>
 
-    <GridLayout row="1" col="0" rows="auto" columns="auto, *" colSpan="2" borderTopWidth="1" borderTopColor="#444" padding="10 5 0 5">
+    <GridLayout
+        row="1"
+        col="0"
+        colSpan="2"
+        rows="auto"
+        columns="auto, *"
+        class="m-t-l border-t-gray"
+        padding="10 5 0 5">
         <Label col="0" [text]="icons.info" fontSize="20" marginRight="5" class="ionicons text-color-gray"></Label>
         <Label col="1" text="Details and More" fontSize="18" class="text-color-gray"></Label>
     </GridLayout>

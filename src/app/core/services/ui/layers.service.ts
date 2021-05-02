@@ -43,7 +43,7 @@ export class LayersService {
     quickviewBottomsheet: {
       view: null,
       isAnimating: false,
-      movieId: undefined,
+      productId: undefined,
     },
     searchBottomsheet: {
       view: null,
@@ -79,7 +79,7 @@ export class LayersService {
 
   // Quickview Bottomsheet ----------
 
-  openQuickviewBottomsheet(movieId: number): void {
+  openQuickviewBottomsheet(productId: number): void {
     this._getView(QuickviewBottomsheetComponent).then(
       (quickviewBottomsheet) => {
         this._layers$.next({
@@ -87,7 +87,7 @@ export class LayersService {
           quickviewBottomsheet: {
             view: quickviewBottomsheet,
             isAnimating: true,
-            movieId: movieId,
+            productId: productId,
           },
         });
         getRootLayout()
@@ -142,7 +142,7 @@ export class LayersService {
             quickviewBottomsheet: {
               view: null,
               isAnimating: false,
-              movieId: undefined,
+              productId: undefined,
             },
           });
         });
@@ -321,7 +321,7 @@ export interface Layers {
   quickviewBottomsheet: {
     view: View;
     isAnimating: boolean;
-    movieId: number;
+    productId: number;
   };
   searchBottomsheet: {
     isAnimating: boolean;

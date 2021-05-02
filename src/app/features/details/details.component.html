@@ -1,9 +1,9 @@
 <ScrollView>
-    <ng-container *ngIf="movieDetails$ | async as movieDetails">
+    <ng-container *ngIf="productDetails$ | async as productDetails">
         <StackLayout>
             <!-- hero -->
             <GridLayout height="250" class="glow-shadow">
-                <Image stretch="aspectFill" [src]="movieDetails.image.cover" iosOverflowSafeArea="true"></Image>
+                <Image stretch="aspectFill" [src]="productDetails.image.cover" iosOverflowSafeArea="true"></Image>
                 <ContentView iosOverflowSafeArea="true" background="linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.2))"></ContentView>
 
                 <!-- giant play button -->
@@ -18,43 +18,42 @@
             <StackLayout @slideUpFadeStagger>
                 <!-- main content -->
                 <StackLayout padding="20">
-                    <Label *ngIf="true" [text]="movieDetails.title | uppercase" textAlignment="center" class="bold" fontSize="25"></Label>
+                    <Label *ngIf="true" [text]="productDetails.title | uppercase" class="bold text-center" fontSize="25"></Label>
 
                     <!-- categories -->
                     <StackLayout *ngIf="true" orientation="horizontal" horizontalAlignment="center">
-                        <ng-container *ngFor="let category of movieDetails.categories">
+                        <ng-container *ngFor="let category of productDetails.categories">
                             <Label [text]="category | titlecase" class="medium" fontSize="15" opacity="0.8" margin="3"></Label>
                         </ng-container>
                     </StackLayout>
 
-                    <!-- some movie stats -->
-                    <GridLayout *ngIf="true" columns="*, *, *" rows="auto, auto" margin="15 0">
-                    
-                        <!-- year -->
-                        <Label col="0" row="0" textAlignment="center" fontSize="20" class="medium" [text]="movieDetails.year"></Label>
-                        <Label col="0" row="1" textAlignment="center" fontSize="10" text="Year"></Label>
-
-                        <!-- country -->
-                        <Label col="1" row="0" textAlignment="center" fontSize="20" class="medium" [text]="movieDetails.country"></Label>
-                        <Label col="1" row="1" textAlignment="center" fontSize="10" text="Country"></Label>
-
-                        <!-- duration -->
-                        <Label col="2" row="0" textAlignment="center" fontSize="20" class="medium" [text]="movieDetails.duration"></Label>
-                        <Label col="2" row="1" textAlignment="center" fontSize="10" text="Length (mins)"></Label>
-
-                    </GridLayout>
+                    <!-- some product stats -->
+                    <FlexboxLayout *ngIf="true" class="p-l m-t-l m-b-l" justifyContent="space-between">
+                        <ng-container *ngFor="let info of productDetails.keyInformation">
+                            <StackLayout>
+                                <ng-container *ngFor="let item of info | keyvalue">
+                                    <Label
+                                        class="font-size-h3 text-center"
+                                        [text]="item.key"></Label>
+                                    <Label
+                                        class="font-size-h2 medium text-center"
+                                        [text]="item.value"></Label>
+                                </ng-container>
+                            </StackLayout>
+                        </ng-container>
+                    </FlexboxLayout>
 
                     <!-- description -->
-                    <Label *ngIf="true" textWrap="true" margin="5 20" [text]="movieDetails.description" textAlignment="center" opacity="0.7"></Label>
+                    <Label *ngIf="true" textWrap="true" margin="5 20" [text]="productDetails.description" textAlignment="center" opacity="0.7"></Label>
                 </StackLayout>
 
                 <!-- related -->
-                <Label *ngIf="true" text="Related" margin="10 20 0 20" class="bold" fontSize="18"></Label>
+                <!-- <Label *ngIf="true" text="Related" margin="10 20 0 20" class="bold" fontSize="18"></Label> -->
                 <!-- <ng-container *ngIf="relatedMovies$ | async as movies">
                     <ScrollView orientation="horizontal" height="168" scrollBarIndicatorVisible="false">
                         <StackLayout orientation="horizontal" padding="10 20">
                             <ng-container *ngFor="let movie of movies">
-                                <ContentView (tap)="navigateToMovieDetails(movie.id)">
+                                <ContentView (tap)="navigateToProductDetails(movie.id)">
                                     <ns-thumbnail-card [imageSrc]="movie.image.thumbnail"></ns-thumbnail-card>
                                 </ContentView>
                             </ng-container>

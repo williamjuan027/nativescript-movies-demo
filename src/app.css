@@ -36,6 +36,7 @@
   /* Colors */
   --color-primary: #65adf1;
   --color-bg-default: #fefefe;
+  --color-bg-gray: #444;
 
   --color-text-on-primary: #fefefe;
   --color-text-default: #393838;
@@ -99,6 +100,18 @@
 }
 .m-t-s {
   margin-top: var(--spacing-s);
+}
+.m-b-xl {
+  margin-bottom: var(--spacing-xl);
+}
+.m-b-l {
+  margin-bottom: var(--spacing-l);
+}
+.m-b-m {
+  margin-bottom: var(--spacing-m);
+}
+.m-b-s {
+  margin-bottom: var(--spacing-s);
 }
 
 /* Font */
@@ -169,6 +182,11 @@ TextField {
   border-bottom-width: 1;
 }
 
+.border-t-gray {
+  border-top-color: var(--color-bg-gray) var(--color-text-gray);
+  border-top-width: 1;
+}
+
 .border-radius-l {
   border-radius: var(--border-radius-l);
 }
@@ -187,12 +205,19 @@ TextField {
   text-shadow: var(--text-shadow-default);
 }
 
+/* alignments */
 .text-center {
   text-align: center;
 }
 
 .v-center {
   vertical-align: middle;
+}
+.v-top {
+  vertical-align: top;
+}
+.v-bottom {
+  vertical-align: bottom;
 }
 
 .h-center {

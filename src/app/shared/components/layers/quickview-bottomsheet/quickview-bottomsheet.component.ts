@@ -1,11 +1,12 @@
 import { Component } from "@angular/core";
 import { tap, map, switchMap } from "rxjs/operators";
+import { Store } from "@ngxs/store";
 import {
-  DataService,
   LayersService,
   Icons,
   NavigationService,
   Routes,
+  ProductState,
 } from "@app/core";
 
 @Component({
@@ -17,17 +18,20 @@ export class QuickviewBottomsheetComponent {
   state$ = this.layersService
     .getLayers$()
     .pipe(map((layers) => layers.quickviewBottomsheet));
-  // movieDetails$ = this.state$.pipe(
-  //   map((state) => state.movieId),
-  //   tap((movieId) => (this._movieId = movieId)),
-  //   switchMap((movieId) => this.dataService.getMovieById(movieId))
-  // );
+
+  productDetails$ = this.state$.pipe(
+    map((state) => state.productId),
+    tap((productId) => (this._productId = productId)),
+    switchMap((productId) =>
+      this.store.select(ProductState.productById(productId))
+    )
+  );
 
   icons = Icons;
-  private _movieId;
+  private _productId: number;
 
   constructor(
-    private dataService: DataService,
+    private store: Store,
     private layersService: LayersService,
     private navigationService: NavigationService
   ) {}
@@ -36,8 +40,8 @@ export class QuickviewBottomsheetComponent {
     this.layersService.closeQuickviewBottomsheet();
   }
 
-  navigateToMovieDetails(): void {
-    this.navigationService.navigate(Routes.details, { id: this._movieId });
+  navigateToProductDetails(): void {
+    this.navigationService.navigate(Routes.details, { id: this._productId });
     this.close();
   }
 }

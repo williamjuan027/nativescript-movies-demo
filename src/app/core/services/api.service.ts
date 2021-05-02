@@ -1,9 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
+import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { ApiRoutes } from "../models/constants/api-routes";
-import { ICategory, IProductGroup } from "../models/interfaces";
+import { ICategory, IProductGroup, RemoteStyle } from "../models/interfaces";
 
 @Injectable({
   providedIn: "root",
@@ -33,6 +33,17 @@ export class ApiService {
     return this.http.get(styleUrl, {
       responseType: "text",
     });
+  }
+
+  getRemoteStylesOptions$(): Observable<RemoteStyle[]> {
+    return this.http
+      .get(
+        "https://raw.githubusercontent.com/williamjuan027/movies-app-api/main/styles/styles.json",
+        {
+          responseType: "json",
+        }
+      )
+      .pipe(map((res) => (<any>res)?.styles));
   }
 
   private _formatUrl(baseUrl: string, extension: string): string {

@@ -3,28 +3,62 @@
         <ns-header [headerTitle]="(staticText$ | async)?.config?.title || 'SETTINGS'" hasMenuButton="true"></ns-header>
 
     <StackLayout class="p-xl">
-        <Label [text]="(staticText$ | async)?.config?.description"></Label>
+        <!-- <Label [text]="(staticText$ | async)?.config?.description"></Label> -->
     
-        <Label
+        <!-- <Label
             [text]="(staticText$ | async)?.config?.dataUrlTitle || 'Data URL'"
-            class="font-size-h2 m-t-xl"></Label>
+            class="font-size-h2 medium m-t-xl"></Label>
         <TextField
             hint="https://raw.githubusercontent.com/..."
             [(ngModel)]="dataUrl"
-            class="font-size-h3 p-s m-t-s border-b-primary"></TextField>
+            class="font-size-h3 p-s m-t-s border-b-primary"></TextField> -->
     
         <Label
-            [text]="(staticText$ | async)?.config?.stylingUrlTitle || 'Styling URL'"
-            class="font-size-h2 m-t-xl"></Label>
-        <TextField
-            hint="https://raw.githubusercontent.com/..."
-            [(ngModel)]="stylingUrl"
-            class="font-size-h3 p-s m-t-s border-b-primary"></TextField>
-        
-        <Button
-            [text]="(staticText$ | async)?.config?.buttons?.update || 'UPDATE'"
-            (tap)="updateUrls()"
-            class="button-primary medium m-t-xl"></Button>
+            [text]="(staticText$ | async)?.config?.stylingUrlTitle || 'Styling'"
+            class="font-size-h1 m-b-l"></Label>
+
+        <ng-container *ngIf="{ selected: (stylingUrl$ | async), options: (styleOptions$ | async)} as styles">
+            <ng-container *ngFor="let styleOption of styles.options">
+                <GridLayout columns="*, 50">
+                    <Label
+                        [text]="styleOption?.displayName"
+                        (tap)="updateStylingUrl(styleOption?.styleUrl)"
+                        class="font-size-h3 p-s m-t-s"
+                        [class.bold]="!displayCustomStyleTextfield && styles.selected === styleOption?.styleUrl"></Label>
+                    <Label
+                        *ngIf="!displayCustomStyleTextfield && styles.selected === styleOption?.styleUrl"
+                        col="1"
+                        class="ionicons font-size-h1 text-color-primary"
+                        [text]="icon.check"></Label>
+                </GridLayout>
+            </ng-container>
+
+            <GridLayout columns="*, 50">
+                <Label
+                    text="Custom"
+                    (tap)="toggleCustomStyle()"
+                    class="font-size-h3 p-s m-t-s"
+                    [class.bold]="displayCustomStyleTextfield"></Label>
+                <Label
+                    *ngIf="displayCustomStyleTextfield"
+                    col="1"
+                    class="ionicons font-size-h1 text-color-primary"
+                    [text]="icon.check"></Label>
+            </GridLayout>
+        </ng-container>
+
+            <ng-container *ngIf="displayCustomStyleTextfield">
+                <TextField
+                    hint="https://raw.githubusercontent.com/..."
+                    [(ngModel)]="stylingUrl"
+                    class="font-size-h3 p-s m-t-s border-b-primary"></TextField>
+                
+                <Button
+                    [text]="(staticText$ | async)?.config?.buttons?.update || 'UPDATE'"
+                    (tap)="updateUrls()"
+                    class="button-primary medium m-t-xl"></Button>
+            </ng-container>
+            
         </StackLayout>
     </StackLayout>
 </ScrollView>

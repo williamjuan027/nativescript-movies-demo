@@ -1,14 +1,14 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { Page, EventData } from "@nativescript/core";
-import { BehaviorSubject } from "rxjs";
+import { Page } from "@nativescript/core";
 import { map, switchMap } from "rxjs/operators";
+import { Store } from "@ngxs/store";
 import {
-  DataService,
   Icons,
   NavigationService,
   Routes,
   SlideUpFadeStagger,
+  ProductState,
 } from "@app/core";
 
 @Component({
@@ -19,26 +19,25 @@ import {
 })
 export class DetailsComponent {
   icons = Icons;
-
-  movieDetails$ = new BehaviorSubject({});
-  // movieId$ = this.activatedRoute.params.pipe(map((params) => params.id));
-  // movieDetails$ = this.movieId$.pipe(
-  //   switchMap((id) => this.dataService.getMovieById(id))
-  // );
-  // relatedMovies$ = this.movieId$.pipe(
-  //   switchMap((id) => this.dataService.getRelatedMoviesById(id))
-  // );
+  productId$ = this.activatedRoute.params.pipe(
+    map((params) => parseInt(params.id))
+  );
+  productDetails$ = this.productId$.pipe(
+    switchMap((productId) =>
+      this.store.select(ProductState.productById(productId))
+    )
+  );
 
   constructor(
+    private store: Store,
     private page: Page,
     private activatedRoute: ActivatedRoute,
-    private dataService: DataService,
     private navigationService: NavigationService
   ) {
     this.page.actionBarHidden = true;
   }
 
-  navigateToMovieDetails(id: number): void {
+  navigateToProductDetails(id: number): void {
     this.navigationService.navigate(Routes.details, { id: id });
   }
 }
