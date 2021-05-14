@@ -16,5 +16,8 @@
         <GridLayout col="0" colSpan="2" [@mainContent]="(menuIsOpen$ | async) ? 'menuIsOpen' : 'menuIsClosed'" [class.glow-shadow]="(menuIsOpen$ | async)">
                 <page-router-outlet></page-router-outlet>
         </GridLayout>
+
+        <ns-alert-popup col="0" colSpan="2"></ns-alert-popup>
+        
     </GridLayout>
 </RootLayout>

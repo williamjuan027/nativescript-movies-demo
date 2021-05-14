@@ -89,6 +89,18 @@
 .m-s {
   margin: var(--spacing-s);
 }
+.m-x-l {
+  margin-left: var(--spacing-l);
+  margin-right: var(--spacing-l);
+}
+.m-x-m {
+  margin-left: var(--spacing-m);
+  margin-right: var(--spacing-m);
+}
+.m-x-s {
+  margin-left: var(--spacing-s);
+  margin-right: var(--spacing-s);
+}
 .m-t-xl {
   margin-top: var(--spacing-xl);
 }
