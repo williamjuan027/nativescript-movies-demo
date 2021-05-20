@@ -148,6 +148,12 @@
   border-radius: var(--border-radius-m);
 }
 
+.button-text {
+  font-size: var(--font-size-h3);
+  color: var(--color-text-gray);
+  padding: var(--spacing-l);
+}
+
 Page {
   background-color: var(--color-bg-default);
 }

@@ -1,0 +1,40 @@
+<GridLayout 
+    class="v-center h-center"
+    opacity="0"
+    (loaded)="popupContainerLoaded($event)"
+>   
+    <GridLayout
+        rows="auto, auto, auto, auto"
+        class="p-xl bg-color-default border-radius-m m-l"
+        androidElevation="15">
+        <Label
+            row="0"
+            text="ALERT!!!"
+            class="bold font-size-h1 text-color-primary text-center"></Label>
+
+        <Label
+            row="1"
+            textWrap="true"
+            class="font-size-h3 text-color-gray text-center m-t-xl">
+            <FormattedString>
+                <Span text="You just got a bouncy popup powered by "></Span>
+                <Span class="medium text-color-primary" text="Popmotion "></Span>
+                <Span text="in "></Span>
+                <Span class="medium text-color-primary" text="Nativescript"></Span>
+                <Span text="🥳🎉"></Span>
+            </FormattedString>
+        </Label>
+    
+        <Button
+            row="2"
+            text="animate"
+            class="button-primary m-t-xl m-x-l"
+            (tap)="animateStretch()"></Button>
+        <Button
+            row="3"
+            text="close"
+            class="button-text m-t-s m-x-l"
+            (tap)="close()"></Button>
+    </GridLayout>
+
+</GridLayout>

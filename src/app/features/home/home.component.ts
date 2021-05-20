@@ -34,4 +34,8 @@ export class HomeComponent {
   openProductDetails(id: number): void {
     this.layersService.openQuickviewBottomsheet(id);
   }
+
+  openAlertPopup(): void {
+    this.layersService.openAlertPopup();
+  }
 }

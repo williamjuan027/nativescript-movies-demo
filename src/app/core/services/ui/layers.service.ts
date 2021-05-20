@@ -40,6 +40,9 @@ export class LayersService {
     menu: {
       isOpen: false,
     },
+    alertPopup: {
+      isOpen: false,
+    },
     quickviewBottomsheet: {
       view: null,
       isAnimating: false,
@@ -72,6 +75,24 @@ export class LayersService {
     this._layers$.next({
       ...this.getLayersCurrentValue(),
       menu: {
+        isOpen: false,
+      },
+    });
+  }
+
+  openAlertPopup(): void {
+    this._layers$.next({
+      ...this.getLayersCurrentValue(),
+      alertPopup: {
+        isOpen: true,
+      },
+    });
+  }
+
+  closeAlertPopup(): void {
+    this._layers$.next({
+      ...this.getLayersCurrentValue(),
+      alertPopup: {
         isOpen: false,
       },
     });
@@ -316,6 +337,9 @@ export class LayersService {
 
 export interface Layers {
   menu: {
+    isOpen: boolean;
+  };
+  alertPopup: {
     isOpen: boolean;
   };
   quickviewBottomsheet: {
