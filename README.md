@@ -4,6 +4,8 @@
 
 [![Nativescript](https://img.shields.io/badge/Nativescript-8-blue.svg?style=for-the-badge)]()
 [![Angular](https://img.shields.io/badge/Angular-11-red.svg?style=for-the-badge)]()
+[![Node](https://img.shields.io/badge/Node-12.7.0-darkgreen.svg?style=for-the-badge)]()
+[![NPM](https://img.shields.io/badge/NPM-7.7.5-darkred.svg?style=for-the-badge)]()
 
 <img alt="movies app preview" src="https://github.com/williamjuan027/nativescript-movies-demo/blob/master/screenshots/github-trailer.gif" width="500">
 
