@@ -72,42 +72,5 @@ export class JsAnimationService {
         1000
       );
     });
-    // this.zone.runOutsideAngular(() => {
-    //   popmotionAnimate({
-    //     from: "1,1",
-    //     to: "1.2,0.8",
-    //     duration: 200,
-    //     onUpdate: (latest) => {
-    //       const [scaleX, scaleY] = latest.split(",").map((val) => +val);
-    //       view.scaleX = scaleX;
-    //       view.scaleY = scaleY;
-    //     },
-    //     onComplete: () => {
-    //       popmotionAnimate({
-    //         from: "1.2,0.8",
-    //         to: "1, 1",
-    //         duration: 1000,
-    //         stiffness: 700,
-    //         damping: 10,
-    //         type: "spring",
-    //         onUpdate: (latest) => {
-    //           const [scaleX, scaleY] = latest.split(",").map((val) => +val);
-    //           view.scaleX = scaleX;
-    //           view.scaleY = scaleY;
-    //         },
-    //         onComplete: () => {
-    //           resolve();
-    //         },
-    //         onStop: () => {
-    //           resolve();
-    //         },
-    //       });
-    //     },
-    //     onStop: () => {
-    //       resolve();
-    //     },
-    //   });
-    // });
-    // });
   }
 }
