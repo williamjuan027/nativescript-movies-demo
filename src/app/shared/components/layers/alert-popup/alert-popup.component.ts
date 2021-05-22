@@ -15,8 +15,6 @@ import {
   templateUrl: "alert-popup.component.html",
 })
 export class AlertPopupComponent {
-  // @ViewChild("popupContainer") popupContainer: ElementRef;
-
   _popupContainer: View;
   private _isAnimating = false;
   private _alertIsOpen = false;
