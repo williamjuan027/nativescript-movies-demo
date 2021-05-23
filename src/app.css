@@ -146,12 +146,18 @@
   color: var(--color-text-on-primary);
   padding: var(--spacing-l);
   border-radius: var(--border-radius-m);
+  text-transform: none;
 }
 
 .button-text {
   font-size: var(--font-size-h3);
   color: var(--color-text-gray);
   padding: var(--spacing-l);
+  text-transform: none;
+  background-color: transparent;
+  border-width: 0;
+  background-color: transparent;
+  z-index: 0;
 }
 
 Page {
@@ -229,7 +235,7 @@ TextField {
 }
 
 .v-center {
-  vertical-align: middle;
+  vertical-align: center;
 }
 .v-top {
   vertical-align: top;

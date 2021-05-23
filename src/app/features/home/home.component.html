@@ -55,8 +55,9 @@
                                 <ng-container *ngIf="category.tinted">
                                     <ContentView class="bg-color-primary" opacity="0.7"></ContentView>
                                 </ng-container>
-                                <Label [text]="category.displayName | uppercase" color="#fff" class="bold" fontSize="17"
-                                    textAlignment="center"></Label>
+                                <Label
+                                    [text]="category.displayName | uppercase"
+                                    class="v-center text-color-light bold text-center font-size-h3"></Label>
     
                             </GridLayout>
                         </ng-container>
