@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
-import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { APP_INITIALIZER, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import {
   NativeScriptModule,
   NativeScriptAnimationsModule,
@@ -13,6 +13,14 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ConfigState, ProductState } from "./core";
 import { SharedModule } from "./shared";
+
+export function asyncBoot(): Function {
+  return (): Promise<void> => new Promise(resolve => {
+    setTimeout(() => {
+      resolve();
+    }, 5000);
+  })
+}
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -28,6 +36,13 @@ import { SharedModule } from "./shared";
     SharedModule,
   ],
   declarations: [AppComponent],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: asyncBoot,
+      multi: true
+    },
+  ],
   schemas: [NO_ERRORS_SCHEMA],
 })
 export class AppModule {}
