@@ -25,7 +25,14 @@ export class MenuComponent {
         this.closeMenu();
       },
     },
-    { displayName: "Account", icon: this.icons.account },
+    {
+      displayName: "Profile",
+      icon: this.icons.account,
+      onTap: () => {
+        this.navigationService.navigate(Routes.profile, null, true);
+        this.closeMenu();
+      },
+    },
     { displayName: "Downloads", icon: this.icons.downloads },
     {
       displayName: "Settings",

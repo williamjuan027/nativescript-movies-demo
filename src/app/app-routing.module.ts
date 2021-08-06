@@ -15,6 +15,11 @@ const routes: Routes = [
       import("./features/details/details.module").then((m) => m.DetailsModule),
   },
   {
+    path: "profile",
+    loadChildren: () =>
+      import("./features/profile/profile.module").then((m) => m.ProfileModule),
+  },
+  {
     path: "config",
     loadChildren: () =>
       import("./features/config/config.module").then((m) => m.ConfigModule),

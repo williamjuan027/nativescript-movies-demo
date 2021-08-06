@@ -15,11 +15,12 @@ import { ConfigState, ProductState } from "./core";
 import { SharedModule } from "./shared";
 
 export function asyncBoot(): Function {
-  return (): Promise<void> => new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, 5000);
-  })
+  return (): Promise<void> =>
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 1000);
+    });
 }
 
 @NgModule({
@@ -40,7 +41,7 @@ export function asyncBoot(): Function {
     {
       provide: APP_INITIALIZER,
       useFactory: asyncBoot,
-      multi: true
+      multi: true,
     },
   ],
   schemas: [NO_ERRORS_SCHEMA],

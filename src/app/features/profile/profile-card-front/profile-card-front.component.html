@@ -1,0 +1,175 @@
+<GridLayout
+    height="650"
+    rows="auto, *">
+
+    <ContentView row="1" boxShadow="0 0 5 0 rgba(0,0,0,0.5)"></ContentView>
+
+    <StackLayout
+        row="1"
+        marginTop="-75"
+        backgroundColor="white"
+        borderRadius="10"
+        padding="25">
+
+        <ng-container *ngIf="profile">
+
+            <!-- edit button -->
+            <GridLayout
+                height="40"
+                width="40"
+                rows="*"
+                columns="*"
+                horizontalAlignment="right"
+                (tap)="onEdit()">
+                <Label
+                    horizontalAlignment="right"
+                    verticalAlignment="top"
+                    class="ionicons font-size-h1 text-color-primary"
+                    [text]="icons.edit"></Label>
+            </GridLayout>
+
+            <!-- name and username -->
+            <Label
+                [text]="profile.displayName"
+                color="#777"
+                marginTop="40"
+                horizontalAlignment="center"
+                fontSize="35"></Label>
+            <Label
+                [text]="profile.username"
+                fontSize="20"
+                horizontalAlignment="center"
+                color="#aaa"></Label>
+
+            <!-- posts, followers, following counts -->
+            <GridLayout rows="auto, auto" columns="*, *, *" marginTop="20">
+
+                <!-- posts -->
+                <Label
+                    row="0"
+                    col="0"
+                    color="#aaa"
+                    fontSize="18"
+                    horizontalAlignment="center"
+                    text="Posts"></Label>
+                <Label
+                    row="1"
+                    col="0"
+                    color="#888"
+                    fontSize="30"
+                    horizontalAlignment="center"
+                    [text]="profile?.posts"></Label>
+
+                <!-- followers -->
+                <Label
+                    row="0"
+                    col="1"
+                    color="#aaa"
+                    fontSize="18"
+                    horizontalAlignment="center"
+                    text="Followers"></Label>
+                <Label
+                    row="1"
+                    col="1"
+                    color="#888"
+                    fontSize="30"
+                    horizontalAlignment="center"
+                    [text]="profile?.followers"></Label>
+
+                <!-- following -->
+                <Label
+                    row="0"
+                    col="2"
+                    color="#aaa"
+                    fontSize="18"
+                    horizontalAlignment="center"
+                    text="Following"></Label>
+                <Label
+                    row="1"
+                    col="2"
+                    color="#888"
+                    fontSize="30"
+                    horizontalAlignment="center"
+                    [text]="profile?.following"></Label>
+
+            </GridLayout>
+
+            <!-- bio -->
+            <ng-container *ngIf="profile.bio">
+                <Label
+                    marginTop="20"
+                    marginBottom="5"
+                    text="Bio"
+                    fontSize="15"
+                    color="#aaa"></Label>
+                <Label
+                    [text]="profile.bio"
+                    fontSize="23"
+                    color="#777"
+                ></Label>
+            </ng-container>
+
+            <!-- recent activities -->
+            <ng-container *ngIf="profile.recentActivities?.length > 0">
+
+                <Label
+                    marginTop="20"
+                    marginBottom="10"
+                    text="Recent Activities"
+                    fontSize="15"
+                    color="#aaa"></Label>
+                
+                <ng-container *ngFor="let activity of profile.recentActivities">
+                    <StackLayout
+                        orientation="horizontal"
+                        marginTop="5">
+                        <ng-container [ngSwitch]="activity.type">
+                            <Label
+                                *ngSwitchCase="'watched'"
+                                verticalAlignment="center"
+                                class="ionicons font-size-h1 text-color-primary"
+                                [text]="icons.filmOutline"
+                            ></Label>
+                            <Label
+                                *ngSwitchCase="'reviewed'"
+                                verticalAlignment="center"
+                                class="ionicons font-size-h1 text-color-primary"
+                                [text]="icons.comment"
+                            ></Label>
+                            <Label
+                                *ngSwitchCase="'liked'"
+                                verticalAlignment="center"
+                                class="ionicons font-size-h1 text-color-primary"
+                                [text]="icons.heartOutline"
+                            ></Label>
+                        </ng-container>
+
+                        <Label
+                            color="#777"
+                            fontSize="18"
+                            marginLeft="10"
+                            verticalAlignment="center"
+                            [text]="activity.message"
+                            textWrap="true"></Label>
+                    </StackLayout>
+                    
+                </ng-container>
+
+            </ng-container>
+
+        </ng-container>
+
+
+    </StackLayout>
+
+    <Image
+        height="150"
+        width="150"
+        borderRadius="75"
+        borderWidth="5"
+        borderColor="white"
+        src="~/assets/images/profile/profile-pic.png"
+        stretch="aspectFill"
+    ></Image>
+
+</GridLayout>

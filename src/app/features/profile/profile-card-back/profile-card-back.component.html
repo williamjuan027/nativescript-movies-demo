@@ -1,0 +1,100 @@
+<GridLayout
+    height="650"
+    rows="auto, *">
+
+    <ContentView row="1" boxShadow="0 0 5 0 rgba(0,0,0,0.5)"></ContentView>
+
+    <StackLayout
+        row="1"
+        marginTop="-75"
+        backgroundColor="white"
+        borderRadius="10"
+        padding="25 30">
+
+        <ng-container *ngIf="profile">
+
+            <!-- edit button -->
+            <GridLayout
+                height="40"
+                width="40"
+                rows="*"
+                columns="*"
+                horizontalAlignment="right"
+                (tap)="onSave()">
+                <Label
+                    horizontalAlignment="right"
+                    verticalAlignment="top"
+                    class="ionicons font-size-h1 text-color-primary"
+                    [text]="icons.save"></Label>
+            </GridLayout>
+
+            <Label
+                text="Display Name"
+                color="#aaa"
+                fontSize="17"
+                marginTop="40"></Label>
+            <TextField
+                fontSize="25"
+                color="#777"
+                marginTop="5"
+                borderBottomWidth="2"
+                borderBottomColor="#aaa"
+                [(ngModel)]="profile.displayName"></TextField>
+
+            <Label
+                text="Username"
+                color="#aaa"
+                fontSize="17"
+                marginTop="40"></Label>
+            <TextField
+                fontSize="25"
+                color="#777"
+                marginTop="5"
+                borderBottomWidth="2"
+                borderBottomColor="#aaa"
+                [(ngModel)]="profile.username"></TextField>
+
+            <Label
+                text="Bio"
+                color="#aaa"
+                fontSize="17"
+                marginTop="40"></Label>
+            <TextField
+                fontSize="25"
+                color="#777"
+                marginTop="5"
+                borderBottomWidth="2"
+                borderBottomColor="#aaa"
+                [(ngModel)]="profile.bio"></TextField>
+
+        </ng-container>
+
+
+    </StackLayout>
+
+    <GridLayout
+        height="150"
+        width="150"
+        borderRadius="75"
+        backgroundColor="#000"
+        borderWidth="5"
+        borderColor="white">
+        <Image
+            height="150"
+            width="150"
+            borderRadius="75"
+            opacity="0.5"
+            src="~/assets/images/profile/profile-pic.png"
+            stretch="aspectFill"
+        ></Image>
+        <Label
+            verticalAlignment="center"
+            horizontalAlignment="center"
+            class="ionicons"
+            color="white"
+            fontSize="50"
+            [text]="icons.edit"
+        ></Label>
+    </GridLayout>
+
+</GridLayout>

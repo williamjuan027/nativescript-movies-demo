@@ -1,0 +1,26 @@
+<GridLayout rows="auto, *">
+
+    <!-- cover image -->
+    <Image
+        row="0"
+        src="~/assets/images/profile/profile-cover.png"
+        width="100%"
+        height="250"
+        stretch="aspectFill"></Image>
+    
+    <!-- main content -->
+    <GridLayout
+        row="1"
+        rows="auto"
+        margin="-150 30 0 30"
+    >
+        <GridLayout #front>
+            <ns-profile-card-front [profile]="profileData" (edit)="onEdit()"></ns-profile-card-front>
+        </GridLayout>
+        <GridLayout #back (loaded)="backLoaded()">
+            <ns-profile-card-back [profile]="profileData" (save)="onSave()"></ns-profile-card-back>
+        </GridLayout>
+
+    </GridLayout>
+
+</GridLayout>

@@ -17,4 +17,9 @@ export const Icons = {
   filter: String.fromCharCode(0xf2f5),
   search: String.fromCharCode(0xf505),
   check: String.fromCharCode(0xf207),
+  comment: String.fromCharCode(0xf1ec),
+  warn: String.fromCharCode(0xf5ba),
+  filmOutline: String.fromCharCode(0xf2cc),
+  edit: String.fromCharCode(0xf448),
+  save: String.fromCharCode(0xf4fa),
 };
