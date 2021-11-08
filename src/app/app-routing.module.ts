@@ -24,6 +24,13 @@ const routes: Routes = [
     loadChildren: () =>
       import("./features/config/config.module").then((m) => m.ConfigModule),
   },
+  {
+    path: "other-apps",
+    loadChildren: () =>
+      import("./features/other-apps/other-apps.module").then(
+        (m) => m.OtherAppsModule
+      ),
+  },
 ];
 
 @NgModule({

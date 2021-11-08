@@ -19,7 +19,8 @@ export function asyncBoot(): Function {
     new Promise((resolve) => {
       setTimeout(() => {
         resolve();
-      }, 1000);
+      });
+      // }, 1000);
     });
 }
 
