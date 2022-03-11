@@ -1,0 +1,184 @@
+<GridLayout rows="*, 85">
+
+    <!-- main content -->
+    <ScrollView
+        row="0"
+        rowSpan="2"
+        height="100%">
+        <!-- 85 (padding bottom) should match the height of the second row -->
+        <StackLayout padding="20 20 85 20">
+            <Label
+                fontSize="30"
+                fontWeight="600"
+                textWrap="true"
+                text="Find the perfect furniture for your home."
+                marginTop="15"></Label>
+
+            <!-- tags -->
+            <ScrollView
+                orientation="horizontal"
+                height="40"
+                width="100%"
+                marginTop="15">
+                <StackLayout orientation="horizontal">
+                    <ng-container *ngFor="let tag of tags">
+                        <ContentView
+                            height="40"
+                            width="100"
+                            marginRight="5"
+                            [backgroundColor]="tag.selected ? '#65ADF1' : '#fff'"
+                            borderWidth="1"
+                            [borderColor]="tag.selected ? '#65ADF1' : '#555'"
+                            borderRadius="20">
+                            <Label
+                                textAlignment="center"
+                                [text]="tag.tagName"
+                                [color]="tag.selected ? '#fff' : '#555'"></Label>
+                        </ContentView>
+                    </ng-container>
+                </StackLayout>
+            </ScrollView>
+
+            <!-- trending -->
+            <Label
+                fontSize="30"
+                fontWeight="600"
+                textWrap="true"
+                text="Trending"
+                marginTop="25"></Label>
+
+            <ng-container *ngFor="let trendingItem of trending">
+                <ng-container *ngTemplateOutlet="trendingItems; context: { $implicit: trendingItem }"></ng-container>
+            </ng-container>
+
+            <ng-template #trendingItems let-item>
+                <GridLayout rows="30, 210" marginTop="20">
+                    <!-- shadow :) -->
+                    <ContentView
+                        row="2"
+                        margin="15"
+                        boxShadow="1 1 10 0 rgba(0,0,0,0.5)"
+                        height="100%"
+                        width="100%"></ContentView>
+                    <GridLayout
+                        row="1"
+                        rows="*, auto, auto, auto"
+                        columns="2*, *"
+                        borderRadius="10"
+                        padding="20"
+                        backgroundColor="#fff"
+                        height="100%">
+                        <Label
+                            row="1"
+                            col="0"
+                            colSpan="2"
+                            fontSize="25"
+                            fontWeight="400"
+                            color="#444"
+                            [text]="item.name"></Label>
+                        <Label
+                            row="2"
+                            col="0"
+                            colSpan="2"
+                            fontSize="17"
+                            fontWeight="300"
+                            color="#666"
+                            [text]="item.description"></Label>
+                        <Label
+                            row="3"
+                            col="0"
+                            fontSize="30"
+                            fontWeight="600"
+                            color="#333"
+                            marginTop="10"
+                            [text]="item.price"></Label>
+
+                        <Button
+                            row="3"
+                            col="1"
+                            backgroundColor="#F1A965"
+                            borderRadius="5"
+                            padding="10"
+                            fontSize="15"
+                            fontWeight="600"
+                            verticalAlignment="bottom"
+                            text="Add to Cart"></Button>
+                    </GridLayout>
+                    <Image
+                        row="0"
+                        rowSpan="2"
+                        horizontalAlignment="right"
+                        verticalAlignment="top"
+                        height="150"
+                        width="300"
+                        stretch="aspectFit"
+                        [src]="item.image"></Image>
+                </GridLayout>
+            </ng-template>
+
+        </StackLayout>
+    </ScrollView>
+
+    <!-- tabs -->
+    <GridLayout
+        row="1"
+        columns="*, *, *, *, *">
+
+        <!-- white tab bar -->
+        <GridLayout
+            col="0"
+            colSpan="5"
+            columns="*, *, *, *, *"
+            height="60"
+            boxShadow="0 -1 5 0 rgba(0,0,0,0.5)"
+            verticalAlignment="bottom">
+
+            <!-- home -->
+            <GridLayout row="0" col="0">
+                <ng-container *ngTemplateOutlet="tab; context: { $implicit: tabs.home }"></ng-container>
+            </GridLayout>
+
+            <!-- search -->
+            <GridLayout row="0" col="1">
+                <ng-container *ngTemplateOutlet="tab; context: { $implicit: tabs.search }"></ng-container>
+            </GridLayout>
+
+            <!-- likes -->
+            <GridLayout row="0" col="3">
+                <ng-container *ngTemplateOutlet="tab; context: { $implicit: tabs.likes }"></ng-container>
+            </GridLayout>
+
+            <!-- notifications -->
+            <GridLayout row="0" col="4">
+                <ng-container *ngTemplateOutlet="tab; context: { $implicit: tabs.notifications }"></ng-container>
+            </GridLayout>
+
+            <!-- we are going to reuse this! -->
+            <ng-template #tab let-tab>
+                <Image
+                    [src]="tab.tabImage"
+                    height="30"
+                    width="30"
+                    stretch="aspectFit"
+                    verticalAlignment="center"
+                    horizontalAlignment="center">
+                </Image>
+            </ng-template>
+            
+        </GridLayout>
+
+        <!-- shopping cart -->
+        <GridLayout
+            row="0"
+            col="2"
+            background="linear-gradient(to top right, #65adf1, #65d8f1)"
+            height="70"
+            width="70"
+            borderRadius="35"
+            verticalAlignment="top">
+            <ng-container *ngTemplateOutlet="tab; context: { $implicit: tabs.cart }"></ng-container>
+        </GridLayout>
+
+    </GridLayout>
+
+</GridLayout>
